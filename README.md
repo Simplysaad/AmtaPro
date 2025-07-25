@@ -70,7 +70,7 @@ The app should now be running at `http://localhost:5173`.
 
 We appreciate everyone contributing to this project:
 
-- [Abdulazeez Badmus (Abu Abdirrahman)](https://github.com/mechseiko)
+- [AMUDA Abdulqoyum Olohuntomi (mechseiko)](https://github.com/mechseiko)
 - You — *after your first contribution, In shaa Allah!*
 
 ---
