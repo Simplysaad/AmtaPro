@@ -29,7 +29,6 @@ const playerSchema = mongoose.Schema(
     physical: { _id: false, height: String, weight: String, age: Number },
     positions: [
       {
-        _id: false,
         type: String,
         enum: ["striker", "midfielder", "goalkeeper", "defender", "forward"],
       },
