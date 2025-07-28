@@ -34,35 +34,38 @@ router.get("/players", async (req, res, next) => {
 
     if (min_age || max_age) {
       filters["physical.age"] = {};
-      if (min_age && !isNaN(Number(min_age)))
-        filters["physical.age"].$gte = Number(min_age);
-      if (max_age && !isNaN(Number(max_age)))
-        filters["physical.age"].$lte = Number(max_age);
+      if (min_age && !isNaN(parseInt(min_age)))
+        filters["physical.age"].$gte = parseInt(min_age);
+      if (max_age && !isNaN(parseInt(max_age)))
+        filters["physical.age"].$lte = parseInt(max_age);
     }
 
     if (min_height || max_height) {
       filters["physical.height"] = {};
-      if (min_height && !isNaN(Number(min_height)))
-        filters["physical.height"].$gte = Number(min_height);
-      if (max_height && !isNaN(Number(max_height)))
-        filters["physical.height"].$lte = Number(max_height);
+      if (min_height && !isNaN(parseInt(min_height)))
+        filters["physical.height"].$gte = parseInt(min_height);
+      if (max_height && !isNaN(parseInt(max_height)))
+        filters["physical.height"].$lte = parseInt(max_height);
     }
 
     if (min_weight || max_weight) {
       filters["physical.weight"] = {};
-      if (min_weight && !isNaN(Number(min_weight)))
-        filters["physical.weight"].$gte = Number(min_weight);
+      if (min_weight && !isNaN(parseInt(min_weight)))
+        filters["physical.weight"].$gte = parseInt(min_weight);
 
-      if (max_weight && !isNaN(Number(max_weight)))
-        filters["physical.weight"].$lte = Number(max_weight);
-
-      return res.status(200).json({
-        success: true,
-        message: `${count > 0 ? count : "no"} players retrieved`,
-        filters,
-        data: allPlayers,
-      });
+      if (max_weight && !isNaN(parseInt(max_weight)))
+        filters["physical.weight"].$lte = parseInt(max_weight);
     }
+
+    const allPlayers = await Player.find(filters);
+    const count = await Player.countDocuments(filters);
+
+    return res.status(200).json({
+      success: true,
+      message: `${count > 0 ? count : "no"} players retrieved`,
+      filters,
+      data: allPlayers,
+    });
   } catch (err) {
     next(err);
   }
