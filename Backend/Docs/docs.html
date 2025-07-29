@@ -1,164 +1,250 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>API Documentation</title>
-    <style>
-      /* From extension vscode.github */
-      /*---------------------------------------------------------------------------------------------
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>API Documentation</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-      .vscode-dark img[src$="\#gh-light-mode-only"],
-      .vscode-light img[src$="\#gh-dark-mode-only"],
-      .vscode-high-contrast:not(.vscode-high-contrast-light)
-        img[src$="\#gh-light-mode-only"],
-      .vscode-high-contrast-light img[src$="\#gh-dark-mode-only"] {
-        display: none;
-      }
-    </style>
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
-    />
-    <style>
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI",
-          system-ui, "Ubuntu", "Droid Sans", sans-serif;
-        font-size: 14px;
-        line-height: 1.6;
-      }
-    </style>
-    <style>
-      .task-list-item {
-        list-style-type: none;
-      }
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
 
-      .task-list-item-checkbox {
-        margin-left: -20px;
-        vertical-align: middle;
-        pointer-events: none;
-      }
-    </style>
-    <style>
-      :root {
-        --color-note: #0969da;
-        --color-tip: #1a7f37;
-        --color-warning: #9a6700;
-        --color-severe: #bc4c00;
-        --color-caution: #d1242f;
-        --color-important: #8250df;
-      }
-    </style>
-    <style>
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --color-note: #2f81f7;
-          --color-tip: #3fb950;
-          --color-warning: #d29922;
-          --color-severe: #db6d28;
-          --color-caution: #f85149;
-          --color-important: #a371f7;
-        }
-      }
-    </style>
-    <style>
-      .markdown-alert {
-        padding: 0.5rem 1rem;
-        margin-bottom: 16px;
-        color: inherit;
-        border-left: 0.25em solid #888;
-      }
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
 
-      .markdown-alert > :first-child {
-        margin-top: 0;
-      }
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
 
-      .markdown-alert > :last-child {
-        margin-bottom: 0;
-      }
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
 
-      .markdown-alert .markdown-alert-title {
-        display: flex;
-        font-weight: 500;
-        align-items: center;
-        line-height: 1;
-      }
+.markdown-alert>:first-child {
+  margin-top: 0
+}
 
-      .markdown-alert .markdown-alert-title .octicon {
-        margin-right: 0.5rem;
-        display: inline-block;
-        overflow: visible !important;
-        vertical-align: text-bottom;
-        fill: currentColor;
-      }
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
 
-      .markdown-alert.markdown-alert-note {
-        border-left-color: var(--color-note);
-      }
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
 
-      .markdown-alert.markdown-alert-note .markdown-alert-title {
-        color: var(--color-note);
-      }
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
 
-      .markdown-alert.markdown-alert-important {
-        border-left-color: var(--color-important);
-      }
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
 
-      .markdown-alert.markdown-alert-important .markdown-alert-title {
-        color: var(--color-important);
-      }
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
 
-      .markdown-alert.markdown-alert-warning {
-        border-left-color: var(--color-warning);
-      }
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
 
-      .markdown-alert.markdown-alert-warning .markdown-alert-title {
-        color: var(--color-warning);
-      }
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
 
-      .markdown-alert.markdown-alert-tip {
-        border-left-color: var(--color-tip);
-      }
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
 
-      .markdown-alert.markdown-alert-tip .markdown-alert-title {
-        color: var(--color-tip);
-      }
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
 
-      .markdown-alert.markdown-alert-caution {
-        border-left-color: var(--color-caution);
-      }
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
 
-      .markdown-alert.markdown-alert-caution .markdown-alert-title {
-        color: var(--color-caution);
-      }
-    </style>
-  </head>
-  <body class="vscode-body vscode-light">
-    <h1 id="api-documentation">API Documentation</h1>
-    <h2 id="overview">Overview</h2>
-    <p>
-      AmtaPro is a dynamic web platform designed to bridge the gap between
-      aspiring footballers and clubs, scouts, and academies worldwide. The site
-      offers footballers a dedicated space to build their online profile and
-      highlight their passion for the game.
-    </p>
-    <p>
-      This API is dedicated to the
-      <a href="http://amta.pro">amta.pro</a> frontend,
-    </p>
-    <h3 id="base-url">base url</h3>
-    <p><code>https://api.amta.pro</code></p>
-    <h2 id="getting-started">Getting started</h2>
-    <h2 id="authentication">Authentication</h2>
-    <h2 id="endpoints">Endpoints</h2>
-    <h2 id="error-codes-and-handling">Error codes and handling</h2>
-    <h2 id="code-samples">Code samples</h2>
-  </body>
-</html>
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="api-documentation">API Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>AmtaPro is a dynamic web platform designed to bridge the gap between aspiring footballers and clubs, scouts, and academies worldwide. The site offers footballers a dedicated space to build their online profile and highlight their passion for the game.</p>
+<p>This API is dedicated to the <a href="http://amta.pro">amta.pro</a> frontend,</p>
+<h3 id="base-url">Base url</h3>
+<p><code>https://api.amta.pro</code></p>
+<h2 id="getting-started">Getting started</h2>
+<h2 id="authentication">Authentication</h2>
+<h2 id="endpoints">Endpoints</h2>
+<h3 id="register-new-user">Register new user</h3>
+<h3 id="create-athlete-profile">Create Athlete profile</h3>
+<ul>
+<li><code>POST /user</code></li>
+<li>Headers:</li>
+<li><code>Authorization: YOUR_API-KEY</code></li>
+<li><code>Content-Type: application/json</code></li>
+<li>Body:</li>
+</ul>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+ <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;jane doe&quot;</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;emailAddress&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;jane@doe.com&quot;</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;john1234&quot;</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<ul>
+<li>Response:
+<code>201 Created</code></li>
+</ul>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+ <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new player profile created&quot;</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;newPlayer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+     <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;jane doe&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;emailAddress&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;jane@doe.com&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;password&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;$2b$12$/peMFEIGrzT6FA96C7W4WeEsj55DaDkBTuKiuk3rBW5dH3NygByaO&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;createdAt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2025-07-29T07:33:02.423Z&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;updatedAt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2025-07-29T07:33:02.423Z&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;__v&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span>
+   <span class="hljs-punctuation">}</span>
+ <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h3 id="retrieved-a-single-player-profile">Retrieved a single player profile</h3>
+<ul>
+<li>GET <code>/players/:id</code></li>
+<li>Headers:</li>
+<li><code>Authorization: YOUR_API_KEY</code></li>
+<li>Response:
+<code>200 OK</code></li>
+</ul>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+ <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;player info retrieved&quot;</span><span class="hljs-punctuation">,</span>
+ <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+   <span class="hljs-attr">&quot;isCurrentUser&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+   <span class="hljs-attr">&quot;currentPlayer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+     <span class="hljs-attr">&quot;physical&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+       <span class="hljs-attr">&quot;height&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;178cm&quot;</span><span class="hljs-punctuation">,</span>
+       <span class="hljs-attr">&quot;weight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;72kg&quot;</span><span class="hljs-punctuation">,</span>
+       <span class="hljs-attr">&quot;age&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">25</span>
+     <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;meta&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+       <span class="hljs-attr">&quot;profileViews&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">310</span>
+     <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;6887e150b01ceaad107dfa0e&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Kelechi Okoye&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;emailAddress&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;kelechi.okoye10@example.com&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;nationality&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Nigeria&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;hiddenFields&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+       <span class="hljs-string">&quot;emailAddress&quot;</span>
+     <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;bio&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Pacy winger with a keen eye for goal. Former youth captain at Enyimba FC.&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;dob&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1999-04-12T00:00:00.000Z&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;positions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+       <span class="hljs-string">&quot;forward&quot;</span><span class="hljs-punctuation">,</span>
+       <span class="hljs-string">&quot;striker&quot;</span>
+     <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;socials&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+       <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Instagram&quot;</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://instagram.com/kelechiokoye10&quot;</span>
+       <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+       <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Twitter&quot;</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://twitter.com/okoyekelechi&quot;</span>
+       <span class="hljs-punctuation">}</span>
+     <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;media&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+       <span class="hljs-punctuation">{</span>
+         <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;video&quot;</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">&quot;url&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;https://example.com/videos/okoye-highlight.mp4&quot;</span><span class="hljs-punctuation">,</span>
+         <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Highlight reel from 2024 season&quot;</span>
+       <span class="hljs-punctuation">}</span>
+     <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;__v&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;createdAt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2025-07-28T20:45:04.997Z&quot;</span><span class="hljs-punctuation">,</span>
+     <span class="hljs-attr">&quot;updatedAt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2025-07-28T20:45:04.997Z&quot;</span>
+   <span class="hljs-punctuation">}</span>
+ <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<h2 id="error-codes-and-handling">Error codes and handling</h2>
+<h2 id="code-samples">Code samples</h2>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>

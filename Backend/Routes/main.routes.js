@@ -1,13 +1,17 @@
 import express, { Router } from "express";
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-import Player from "../Models/player.model.js";
+import Athlete from "../Models/athlete.model.js";
+import User from "../Models/user.model.js";
 import Club from "../Models/club.model.js";
-import players from "../Models/players.js";
+import athletes from "../Models/athletes.js";
+
+import authMiddleware from "../Middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.get("/players", async (req, res, next) => {
+router.get("/athletes", async (req, res, next) => {
   try {
     let {
       positions,
@@ -57,18 +61,81 @@ router.get("/players", async (req, res, next) => {
         filters["physical.weight"].$lte = parseInt(max_weight);
     }
 
-    const allPlayers = await Player.find(filters);
-    const count = await Player.countDocuments(filters);
+    const allAthletes = await Athlete.find(filters);
+    const count = await Athlete.countDocuments(filters);
 
     return res.status(200).json({
       success: true,
-      message: `${count > 0 ? count : "no"} players retrieved`,
+      message: `${count > 0 ? count : "no"} athletes retrieved`,
       filters,
-      data: allPlayers,
+      data: allAthletes,
     });
   } catch (err) {
     next(err);
   }
 });
+
+router.get("/athletes/:id", async (req, res, next) => {
+  try {
+    const { id: athleteId } = req.params;
+    // const { userId: currentUserId } = req.session;
+
+    const isCurrentUser = false; //athleteId === currentUserId;
+
+    const currentAthlete = await Athlete.findOne({ _id: athleteId })
+      .populate("user")
+      .select("-user.password");
+
+    return res.status(200).json({
+      success: true,
+      message: "athlete info retrieved",
+      data: { isCurrentUser, currentAthlete },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+/**
+ * @name POST /athletes
+ * @description create a new athlete (name, email, password, physical)
+ */
+router.post("/athletes", async (req, res, next) => {
+  try {
+    const { name, emailAddress, password, nationality = "nigerian" } = req.body;
+
+    if (!emailAddress || !password) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "incomplete request: name, emailAddress or password not provided",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    const newUser = new User({
+      name,
+      emailAddress,
+      nationality,
+      role,
+      password: hashedPassword,
+    });
+
+    await newUser.save();
+
+    return res.status(201).json({
+      success: true,
+      message: "new athlete profile created",
+      data: {
+        newUser,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 export default router;

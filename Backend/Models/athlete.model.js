@@ -2,18 +2,9 @@ import { mongoose } from "mongoose";
 
 const playerSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    emailAddress: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
     },
     nationality: String,
     hiddenFields: [
@@ -42,7 +33,7 @@ const playerSchema = mongoose.Schema(
           enum: ["video", "image"],
         },
         url: String,
-        description: String, 
+        description: String,
       },
     ],
     meta: {
