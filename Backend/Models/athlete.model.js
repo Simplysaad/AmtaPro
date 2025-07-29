@@ -7,6 +7,14 @@ const playerSchema = mongoose.Schema(
       ref: "users",
       // unique: true
     },
+    profilePic: {
+      type: String,
+    },
+    status: {
+      type: String,
+      enum: ["available", "unavailable"],
+      default: "available",
+    },
     nationality: String,
     hiddenFields: [
       {

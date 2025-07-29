@@ -61,6 +61,11 @@
 - `positions` (array): List of positions.
 - `nationality` (string): Nationality (default: "nigerian").
 
+**File**
+- `profilePic` (image/*): profile image
+
+**Note: make sure to use `enctype:"multipart/formdata"`**
+
 **Response:**
 ```json
 {
