@@ -83,7 +83,7 @@ import jwt from "jsonwebtoken"
         if (!currentUser) {
           return res.status(400).json({
             success: false,
-            message: "email address does not exists",
+            message: "email address does not exist",
           });
         }
 

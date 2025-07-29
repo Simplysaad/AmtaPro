@@ -146,8 +146,6 @@ router.post("/athletes", async (req, res, next) => {
       nationality,
     });
 
-    console.log(newAthlete);
-
     await newAthlete.save();
 
     return res.status(201).json({
@@ -191,7 +189,7 @@ router.put(["/athlete/:id", "/athlete/"], async (req, res, next) => {
       if (nationality) updates.$set.nationality = nationality.toLowerCase();
     }
     if (positions) {
-      const positionsArray = Array.isArray(positions) ? positions : [positions]
+      const positionsArray = Array.isArray(positions) ? positions : [positions];
       updates.$addToSet = { positions: { $each: positionsArray } };
     }
     const updatedAthlete = await Athlete.findOneAndUpdate(

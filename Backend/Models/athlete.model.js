@@ -46,7 +46,7 @@ const playerSchema = mongoose.Schema(
 );
 
 playerSchema.index({ name: "text", positions: "text" });
-playerSchema.virtual("physical.age").set(function () {
+playerSchema.virtual("physical.age").get(function () {
   return new Date().getFullYear() - new Date(this.dob).getFullYear();
 });
 
