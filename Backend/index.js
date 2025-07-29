@@ -36,8 +36,8 @@ app.use(express.static("./Docs/"));
 
 app.use(errorHandler);
 
+app.use("/auth", authRoutes);
 app.use("/", mainRoutes);
-app.use("/", authRoutes);
 
 app.listen(PORT, () => {
   connectDB();

@@ -5,6 +5,7 @@ const playerSchema = mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
+      // unique: true
     },
     nationality: String,
     hiddenFields: [
@@ -17,7 +18,7 @@ const playerSchema = mongoose.Schema(
     dob: {
       type: Date,
     },
-    physical: { _id: false, height: String, weight: String, age: Number },
+    physical: { _id: false, height: Number, weight: Number },
     positions: [
       {
         type: String,
@@ -44,6 +45,9 @@ const playerSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-playerSchema.index({ name: "text", "positions": "text" });
+playerSchema.index({ name: "text", positions: "text" });
+playerSchema.virtual("physical.age").get(function () {
+  return new Date().getFullYear() - new Date(this.dob).getFullYear();
+});
 
 export default new mongoose.model("player", playerSchema);
