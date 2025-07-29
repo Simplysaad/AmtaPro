@@ -15,6 +15,8 @@ app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
 
+app.use(express.static("./Docs/"));
+
 app.use(errorHandler);
 
 app.use("/", mainRoutes)
