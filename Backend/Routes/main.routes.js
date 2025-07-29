@@ -61,7 +61,7 @@ router.get("/athletes", async (req, res, next) => {
         filters["physical.weight"].$lte = parseInt(max_weight);
     }
 
-    const allAthletes = await Athlete.find(filters);
+    const allAthletes = await Athlete.find(filters).populate("user");
     const count = await Athlete.countDocuments(filters);
 
     return res.status(200).json({
@@ -78,11 +78,13 @@ router.get("/athletes", async (req, res, next) => {
 router.get("/athletes/:id", async (req, res, next) => {
   try {
     const { id: athleteId } = req.params;
-    // const { userId: currentUserId } = req.session;
+    const { userId: currentUserId } = req.session;
 
-    const isCurrentUser = false; //athleteId === currentUserId;
+    const isCurrentUser = athleteId === currentUserId;
 
-    const currentAthlete = await Athlete.findOne({ _id: athleteId })
+    const currentAthlete = await Athlete.findOne({
+      $or: [{ _id: athleteId }, { user: athleteId }],
+    })
       .populate("user")
       .select("-user.password");
 
@@ -97,38 +99,62 @@ router.get("/athletes/:id", async (req, res, next) => {
 });
 
 /**
- * @name POST /athletes
- * @description create a new athlete (name, email, password, physical)
+ * @route POST /athletes
+ * @description create a new athlete (bio, dob, height, weight, positions = [], nationality = "nigerian")
  */
+
 router.post("/athletes", async (req, res, next) => {
   try {
-    const { name, emailAddress, password, nationality = "nigerian" } = req.body;
+    const {
+      bio,
+      dob,
+      height,
+      weight,
+      positions = [],
+      nationality = "nigerian",
+    } = req.body;
 
-    if (!emailAddress || !password) {
-      return res.status(400).json({
+    const { userId: user } = req.session;
+    if (!user) {
+      return res.status(403).json({
         success: false,
-        message:
-          "incomplete request: name, emailAddress or password not provided",
+        message: "user not logged in",
       });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const currentAthlete = await Athlete.findOne({ user });
+    if (currentAthlete) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "athlete profile exists already, try editing it `PUT /athlete/:id`",
+        data: {
+          currentAthlete,
+        },
+      });
+    }
 
-    const newUser = new User({
-      name,
-      emailAddress,
+    const newAthlete = new Athlete({
+      user,
+      bio,
+      dob: new Date(dob),
+      physical: {
+        height: parseInt(height),
+        weight: parseInt(weight),
+      },
+      positions,
       nationality,
-      role,
-      password: hashedPassword,
     });
 
-    await newUser.save();
+    console.log(newAthlete);
+
+    await newAthlete.save();
 
     return res.status(201).json({
       success: true,
       message: "new athlete profile created",
       data: {
-        newUser,
+        newAthlete,
       },
     });
   } catch (err) {
@@ -136,6 +162,62 @@ router.post("/athletes", async (req, res, next) => {
   }
 });
 
+/**
+ * @route PUT /athletes/:id
+ * @description edit athlete profile
+ * @params (bio, dob, height, weight, positions = [], nationality = "nigerian")
+ */
 
+router.put(["/athlete/:id", "/athlete/"], async (req, res, next) => {
+  try {
+    const { bio, dob, height, weight, positions, nationality } = req.body;
+
+    const { userId: user } = req.session;
+    if (!user) {
+      return res.status(403).json({
+        success: false,
+        message: "user not logged in",
+      });
+    }
+
+    const updates = {};
+
+    if (bio || dob || height || weight || nationality) {
+      updates.$set = {};
+      if (bio) updates.$set.bio = bio;
+      if (dob) updates.$set.dob = new Date(dob);
+      if (height) updates.$set["physical.height"] = parseInt(height);
+      if (weight) updates.$set["physical.weight"] = parseInt(weight);
+      if (nationality) updates.$set.nationality = nationality.toLowerCase();
+    }
+    if (positions) {
+      const positionsArray = Array.isArray(positions) ? positions : [positions]
+      updates.$addToSet = { positions: { $each: positionsArray } };
+    }
+    const updatedAthlete = await Athlete.findOneAndUpdate(
+      { $or: [{ _id: user }, { user }] },
+      updates,
+      { new: true }
+    );
+
+    if (!updatedAthlete) {
+      return res.status(404).json({
+        success: false,
+        message: "athlete profile does not exist",
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "athlete profile edited successfully",
+      data: {
+        updates,
+        updatedAthlete,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 export default router;

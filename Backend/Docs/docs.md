@@ -1,126 +1,122 @@
-# API Documentation
-
-## Overview
-
-AmtaPro is a dynamic web platform designed to bridge the gap between aspiring footballers and clubs, scouts, and academies worldwide. The site offers footballers a dedicated space to build their online profile and highlight their passion for the game.
-
-This API is dedicated to the amta.pro frontend, 
-
-### Base url 
-`https://api.amta.pro`
-
-## Getting started
+# Athlete API Documentation
 
 ## Authentication
+- Most routes require authentication via session, API key, or JWT cookie.
 
-Authentication could be in any of three ways depending on the user role:
-- By user login (athlete/admin/academy) 
-- token-based authentication
-- Using API key (admin only)
+---
 
-see `../Middlewares/auth.middleware.js` for more code clarity
+## GET /athletes
 
+**Description:** Retrieve a list of athletes with optional filters.
 
-## Endpoints
+**Query Parameters:**
+- `positions` (array or string): Filter by position(s).
+- `nationality` (string): Filter by nationality.
+- `min_age`, `max_age` (number): Filter by age range.
+- `min_height`, `max_height` (number): Filter by height range (cm).
+- `min_weight`, `max_weight` (number): Filter by weight range (kg).
 
-
-
-### Register new user
-
-- `POST /user`
-- Headers:
-- `Authorization: YOUR_API-KEY`
-- `Content-Type: application/json`
-- Body:
- ``` json
- {
-  "name": "jane doe",
-  "emailAddress": "jane@doe.com",
-  "password": "john1234"
-}
-```
-- Response:
-  `201 Created`
- ``` json
- {
+**Response:**
+```json
+{
   "success": true,
-  "message": "new athlete profile created",
-  "data": {
-    "newAthlete": {
-      "name": "jane doe",
-      "emailAddress": "jane@doe.com",
-      "password": "$2b$12$/peMFEIGrzT6FA96C7W4WeEsj55DaDkBTuKiuk3rBW5dH3NygByaO",
-      "createdAt": "2025-07-29T07:33:02.423Z",
-      "updatedAt": "2025-07-29T07:33:02.423Z",
-      "__v": 0
-    }
-  }
+  "message": "N athletes retrieved",
+  "filters": { ... },
+  "data": [ ...athlete objects... ]
 }
 ```
 
-### Create Athlete profile
+---
 
+## GET /athletes/:id
 
-### Retrieved a single athlete profile
+**Description:** Retrieve a single athlete by ID.
 
-- GET `/athletes/:id`
-- Headers:
-- `Authorization: YOUR_API_KEY`
-- Response:
- `200 OK`
- ```json
+**Path Parameters:**
+- `id` (string): Athlete ID or User ID.
+
+**Response:**
+```json
 {
   "success": true,
   "message": "athlete info retrieved",
   "data": {
-    "isCurrentUser": false,
-    "currentAthlete": {
-      "physical": {
-        "height": "178cm",
-        "weight": "72kg",
-        "age": 25
-      },
-      "meta": {
-        "profileViews": 310
-      },
-      "_id": "6887e150b01ceaad107dfa0e",
-      "name": "Kelechi Okoye",
-      "emailAddress": "kelechi.okoye10@example.com",
-      "nationality": "Nigeria",
-      "hiddenFields": [
-        "emailAddress"
-      ],
-      "bio": "Pacy winger with a keen eye for goal. Former youth captain at Enyimba FC.",
-      "dob": "1999-04-12T00:00:00.000Z",
-      "positions": [
-        "forward",
-        "striker"
-      ],
-      "socials": [
-        {
-          "name": "Instagram",
-          "url": "https://instagram.com/kelechiokoye10"
-        },
-        {
-          "name": "Twitter",
-          "url": "https://twitter.com/okoyekelechi"
-        }
-      ],
-      "media": [
-        {
-          "type": "video",
-          "url": "https://example.com/videos/okoye-highlight.mp4",
-          "description": "Highlight reel from 2024 season"
-        }
-      ],
-      "__v": 0,
-      "createdAt": "2025-07-28T20:45:04.997Z",
-      "updatedAt": "2025-07-28T20:45:04.997Z"
-    }
+    "isCurrentUser": true/false,
+    "currentAthlete": { ...athlete object... }
   }
 }
 ```
 
-## Error codes and handling
+---
 
-## Code samples
+## POST /athletes
+
+**Description:** Create a new athlete profile.
+
+**Body Parameters:**
+- `bio` (string): Athlete biography.
+- `dob` (string, date): Date of birth (YYYY-MM-DD).
+- `height` (number): Height in cm.
+- `weight` (number): Weight in kg.
+- `positions` (array): List of positions.
+- `nationality` (string): Nationality (default: "nigerian").
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "new athlete profile created",
+  "data": {
+    "newAthlete": { ...athlete object... }
+  }
+}
+```
+
+**Errors:**
+- 403: User not logged in.
+- 400: Athlete profile already exists.
+
+---
+
+## PUT /athlete/:id  
+## PUT /athlete/
+
+**Description:** Edit an existing athlete profile.
+
+**Path Parameters:**
+- `id` (string, optional): Athlete ID.
+
+**Body Parameters:**
+- `bio` (string, optional)
+- `dob` (string, date, optional)
+- `height` (number, optional)
+- `weight` (number, optional)
+- `positions` (array, optional)
+- `nationality` (string, optional)
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "athlete profile edited successfully",
+  "data": {
+    "updates": { ... },
+    "updatedAthlete": { ...athlete object... }
+  }
+}
+```
+
+**Errors:**
+- 403: User not logged in.
+- 404: Athlete profile does not exist.
+
+---
+
+## Notes
+
+- All responses include a `success` boolean and a `message`.
+- Authentication is required for POST and PUT routes.
+- Data models may include nested fields like `physical` (for age, height, weight).
+- Use session, API key, or JWT for authentication as described in the middleware.
+
+---

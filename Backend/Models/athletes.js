@@ -3,7 +3,7 @@ export default [
     name: "Kelechi Okoye",
     emailAddress: "kelechi.okoye10@example.com",
     password: "hashed_password_1",
-    nationality: "Nigeria",
+    nationality: "nigeria",
     hiddenFields: ["emailAddress"],
     bio: "Pacy winger with a keen eye for goal. Former youth captain at Enyimba FC.",
     dob: new Date("1999-04-12"),
