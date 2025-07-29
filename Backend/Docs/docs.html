@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Athlete API Documentation</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="athlete-api-documentation">Athlete API Documentation</h1>
+<h2 id="authentication">Authentication</h2>
+<ul>
+<li>Most routes require authentication via session, API key, or JWT cookie.</li>
+</ul>
+<hr>
+<h2 id="get-athletes">GET /athletes</h2>
+<p><strong>Description:</strong> Retrieve a list of athletes with optional filters.</p>
+<p><strong>Query Parameters:</strong></p>
+<ul>
+<li><code>positions</code> (array or string): Filter by position(s).</li>
+<li><code>nationality</code> (string): Filter by nationality.</li>
+<li><code>min_age</code>, <code>max_age</code> (number): Filter by age range.</li>
+<li><code>min_height</code>, <code>max_height</code> (number): Filter by height range (cm).</li>
+<li><code>min_weight</code>, <code>max_weight</code> (number): Filter by weight range (kg).</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;N athletes retrieved&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;filters&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span> ...athlete objects... <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="get-athletesid">GET /athletes/:id</h2>
+<p><strong>Description:</strong> Retrieve a single athlete by ID.</p>
+<p><strong>Path Parameters:</strong></p>
+<ul>
+<li><code>id</code> (string): Athlete ID or User ID.</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;athlete info retrieved&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;isCurrentUser&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span>/<span class="hljs-keyword">false</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;currentAthlete&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ...athlete object... <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<hr>
+<h2 id="post-athletes">POST /athletes</h2>
+<p><strong>Description:</strong> Create a new athlete profile.</p>
+<p><strong>Body Parameters:</strong></p>
+<ul>
+<li><code>bio</code> (string): Athlete biography.</li>
+<li><code>dob</code> (string, date): Date of birth (YYYY-MM-DD).</li>
+<li><code>height</code> (number): Height in cm.</li>
+<li><code>weight</code> (number): Weight in kg.</li>
+<li><code>positions</code> (array): List of positions.</li>
+<li><code>nationality</code> (string): Nationality (default: &quot;nigerian&quot;).</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;new athlete profile created&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;newAthlete&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ...athlete object... <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><strong>Errors:</strong></p>
+<ul>
+<li>403: User not logged in.</li>
+<li>400: Athlete profile already exists.</li>
+</ul>
+<hr>
+<h2 id="put-athleteid">PUT /athlete/:id</h2>
+<h2 id="put-athlete">PUT /athlete/</h2>
+<p><strong>Description:</strong> Edit an existing athlete profile.</p>
+<p><strong>Path Parameters:</strong></p>
+<ul>
+<li><code>id</code> (string, optional): Athlete ID.</li>
+</ul>
+<p><strong>Body Parameters:</strong></p>
+<ul>
+<li><code>bio</code> (string, optional)</li>
+<li><code>dob</code> (string, date, optional)</li>
+<li><code>height</code> (number, optional)</li>
+<li><code>weight</code> (number, optional)</li>
+<li><code>positions</code> (array, optional)</li>
+<li><code>nationality</code> (string, optional)</li>
+</ul>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;success&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-keyword">true</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;message&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;athlete profile edited successfully&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;updates&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ... <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;updatedAthlete&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> ...athlete object... <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p><strong>Errors:</strong></p>
+<ul>
+<li>403: User not logged in.</li>
+<li>404: Athlete profile does not exist.</li>
+</ul>
+<hr>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>All responses include a <code>success</code> boolean and a <code>message</code>.</li>
+<li>Authentication is required for POST and PUT routes.</li>
+<li>Data models may include nested fields like <code>physical</code> (for age, height, weight).</li>
+<li>Use session, API key, or JWT for authentication as described in the middleware.</li>
+</ul>
+<hr>
+
+            
+            
+        </body>
+        </html>

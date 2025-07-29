@@ -35,10 +35,13 @@ git clone https://github.com/mechseiko/AmtaPro.git
 # 2. Navigate into the project directory
   cd AmtaPro
 
-# 3. Install dependencies
+# 3. Navigate into the frontend folder directory
+  cd amtapro_frontend
+
+# 4. Install dependencies
 npm install
 
-# 4. Start the development server
+# 5. Start the development server
 npm run dev
 ```
 
