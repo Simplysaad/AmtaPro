@@ -6,13 +6,13 @@ const upload = multer({ dest: "Uploads" });
 
 import Athlete from "../Models/athlete.model.js";
 // import User from "../Models/user.model.js";
-// import Club from "../Models/club.model.js";
+// import Scout from "../Models/scout.model.js"
 
 import authMiddleware from "../Middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.get("/athletes", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     let {
       positions,
@@ -76,7 +76,7 @@ router.get("/athletes", async (req, res, next) => {
   }
 });
 
-router.get("/athletes/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id: athleteId } = req.params;
     const { userId: currentUserId } = req.session;
@@ -106,113 +106,108 @@ router.get("/athletes/:id", async (req, res, next) => {
  * @param {Number}  (height, weight)
  * @param {Date}  dob
  * @param {String[]} positions
+ * @tutorial should_use_authMiddleware,
  */
 
-router.post(
-  "/athletes",
-  //authMiddleware,
-  upload.single("profilePic"),
-  async (req, res, next) => {
-    try {
-      const { userId: user } = req.session;
-      if (!user) {
-        return res.status(403).json({
-          success: false,
-          message: "user not logged in",
-        });
-      }
+router.post("/", upload.single("profilePic"), async (req, res, next) => {
+  try {
+    const { userId: user } = req.session;
+    if (!user) {
+      return res.status(403).json({
+        success: false,
+        message: "user not logged in",
+      });
+    }
 
-      const { bio, dob, height, weight, positions, nationality } = req.body;
+    const { bio, dob, height, weight, positions, nationality } = req.body;
 
-      const { profilePic } = req.file;
+    const { profilePic } = req.file;
 
-      // let cloudinaryUpload;
-      if (profilePic) {
-        // cloudinaryUpload = cloudinary.upload(
-        //   profilePic.path,
-        //   (err, result) => {
-        //     if (err) {
-        //       throw new Error("Error uploading image to cloudinary");
-        //     }
-        //     return result;
-        //   }
-        // );
-        // console.log("cloudinaryUpload", cloudinaryUpload);
-      }
+    // let cloudinaryUpload;
+    if (profilePic) {
+      // cloudinaryUpload = cloudinary.upload(
+      //   profilePic.path,
+      //   (err, result) => {
+      //     if (err) {
+      //       throw new Error("Error uploading image to cloudinary");
+      //     }
+      //     return result;
+      //   }
+      // );
+      // console.log("cloudinaryUpload", cloudinaryUpload);
+    }
 
-      const updates = {};
+    const updates = {};
 
-      if (
-        bio ||
-        dob ||
-        height ||
-        weight ||
-        nationality ||
-        profilePic ||
-        cloudinaryUpload
-      ) {
-        updates.$set = {};
+    if (
+      bio ||
+      dob ||
+      height ||
+      weight ||
+      nationality ||
+      profilePic ||
+      cloudinaryUpload
+    ) {
+      updates.$set = {};
 
-        if (bio) updates.$set.bio = bio;
-        if (dob) updates.$set.dob = new Date(dob);
-        if (height) updates.$set["physical.height"] = parseInt(height);
-        if (weight) updates.$set["physical.weight"] = parseInt(weight);
-        if (nationality) updates.$set.nationality = nationality.toLowerCase();
-        // if (cloudinaryUpload) updates.$set.profilePic =  cloudinaryUpload.url;
-        if (profilePic) updates.$set.profilePic = profilePic.path;
-      }
+      if (bio) updates.$set.bio = bio;
+      if (dob) updates.$set.dob = new Date(dob);
+      if (height) updates.$set["physical.height"] = parseInt(height);
+      if (weight) updates.$set["physical.weight"] = parseInt(weight);
+      if (nationality) updates.$set.nationality = nationality.toLowerCase();
+      // if (cloudinaryUpload) updates.$set.profilePic =  cloudinaryUpload.url;
+      if (profilePic) updates.$set.profilePic = profilePic.path;
+    }
 
-      if (positions) {
-        const positionsArray = Array.isArray(positions)
-          ? positions
-          : [positions];
-        updates.$addToSet = { positions: { $each: positionsArray } };
-      }
+    if (positions) {
+      const positionsArray = Array.isArray(positions) ? positions : [positions];
+      updates.$addToSet = { positions: { $each: positionsArray } };
+    }
 
-      const updatedAthlete = await Athlete.findOneAndUpdate(
-        { $or: [{ _id: user }, { user }] },
-        updates,
-        { new: true }
-      );
+    const updatedAthlete = await Athlete.findOneAndUpdate(
+      { $or: [{ _id: user }, { user }] },
+      updates,
+      { new: true }
+    );
 
-      if (!updatedAthlete) {
-        const newAthlete = new Athlete({
-          user,
-          bio,
-          dob: new Date(dob),
-          physical: {
-            height: parseInt(height),
-            weight: parseInt(weight),
-          },
-          positions,
-          nationality,
-          profilePic: profilePic.path,
-          // profilePic :  cloudinaryUpload.url;
-        });
+    if (!updatedAthlete) {
+      const newAthlete = new Athlete({
+        user,
+        bio,
+        dob: new Date(dob),
+        physical: {
+          height: parseInt(height),
+          weight: parseInt(weight),
+        },
+        positions,
+        nationality,
+        profilePic: profilePic.path,
+        // profilePic :  cloudinaryUpload.url;
+      });
 
-        await newAthlete.save();
-
-        return res.status(201).json({
-          success: true,
-          message: "new athlete profile created",
-          data: {
-            newAthlete,
-          },
-        });
-      }
+      await newAthlete.save();
 
       return res.status(201).json({
         success: true,
-        message: "athlete profile edited successfully",
+        message: "new athlete profile created",
         data: {
-          updates,
-          updatedAthlete,
+          newAthlete,
         },
       });
-    } catch (err) {
-      next(err);
     }
-  }
-);
 
-export default router;
+    return res.status(201).json({
+      success: true,
+      message: "athlete profile edited successfully",
+      data: {
+        updates,
+        updatedAthlete,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+const athleteRoutes = router;
+export default athleteRoutes
