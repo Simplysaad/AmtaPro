@@ -1,44 +1,46 @@
 @sa'ad sir
-
 We'll need the backend to store
 
-For Footballers
-
+*****For Footballers
 Create a public profile with:
 
-Name
-Email (public/private toggle)
-Height
-Age (public/private toggle)
+// REQUIREMENTS FOR PROFILE CREATION
+1. Name
+2. Gender
+2. Username
+3. Email (public/private toggle)
+4. Height
+5. Location [State & Country]
+5. Age (public/private toggle)
+6. Playing position (e.g., striker, midfielder, defender)
+7. Profile picture
 
-Playing position (e.g., striker, midfielder, defender)
-
-Profile picture
-Photo gallery (match/action pictures)
-Video uploads (skills, highlights)
-
-Social account links (e.g., X.com, Instagram)
-
-Ability to make some info (like email or age) private.
-
-Share profile via a unique link (like Amta.Pro/player/username).
-
+// AFTER PROFILE CREATION
+8. Photo gallery (match/action pictures)
+9. Video uploads (skills, highlights)
+10. Social account links (e.g, X.com, Instagram)
 
 
+---Ability to make some info (like email or age) private.
+---Share profile via a unique link (like Amta.Pro/player/username).
 
 
-For Academies/Teams
 
+
+
+*****For Academies/Teams
 Create an academy account with:
 
-Name of academy/team
-Location
-Email/contact info
-Website/social links
+1. Name of academy/team
+2. Location
+3. Email/contact info
+4. Website/social links
 
 Browse footballer profiles by filters:
-Age range
-Playing position
-Country
+*Age range
+*Playing position
+*Country
 
-Send direct messages or contact requests.
+
+
+--Send direct messages or contact requests.
