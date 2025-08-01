@@ -73,6 +73,7 @@ The app should now be running at `http://localhost:5173`.
 
 We appreciate everyone contributing to this project:
 
+- *MAKE SURE TO GIT PULL BEFORE YOU GIT PUSH!*
 - [AMUDA Abdulqoyum Olohuntomi (mechseiko)](https://github.com/mechseiko)
 - [IDRIS, saad (simplysaad)](https://github.com/simplysaad)
 - You — *after your first contribution, In shaa Allah!*
