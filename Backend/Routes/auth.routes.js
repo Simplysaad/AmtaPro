@@ -118,4 +118,5 @@ import jwt from "jsonwebtoken"
       }
     });
 
-export default router;
+const authRoutes = router;
+export default authRoutes;

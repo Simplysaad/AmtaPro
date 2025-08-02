@@ -1,11 +1,19 @@
 import { mongoose } from "mongoose";
 
-const playerSchema = mongoose.Schema(
+const athleteSchema = mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
       // unique: true
+    },
+    profilePic: {
+      type: String,
+    },
+    status: {
+      type: String,
+      enum: ["available", "unavailable"],
+      default: "available",
     },
     nationality: String,
     hiddenFields: [
@@ -45,9 +53,10 @@ const playerSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-playerSchema.index({ name: "text", positions: "text" });
-playerSchema.virtual("physical.age").get(function () {
+athleteSchema.index({ name: "text", positions: "text" });
+athleteSchema.virtual("physical.age").get(function () {
   return new Date().getFullYear() - new Date(this.dob).getFullYear();
 });
 
-export default new mongoose.model("player", playerSchema);
+const Athlete = new mongoose.model("athlete", athleteSchema);
+export default Athlete 
