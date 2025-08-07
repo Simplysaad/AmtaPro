@@ -1,17 +1,18 @@
 import express, { Router } from "express";
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
+import multer from "multer";
+const upload = multer({ dest: "Uploads" });
+
+//import cloudinary from "../Utils/cloudinary.js";
 
 import Athlete from "../Models/athlete.model.js";
-import User from "../Models/user.model.js";
-import Club from "../Models/club.model.js";
-import athletes from "../Models/athletes.js";
+// import User from "../Models/user.model.js";
+// import Scout from "../Models/scout.model.js"
 
 import authMiddleware from "../Middlewares/auth.middleware.js";
 
 const router = Router();
 
-router.get("/athletes", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     let {
       positions,
@@ -75,7 +76,7 @@ router.get("/athletes", async (req, res, next) => {
   }
 });
 
-router.get("/athletes/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id: athleteId } = req.params;
     const { userId: currentUserId } = req.session;
@@ -100,20 +101,16 @@ router.get("/athletes/:id", async (req, res, next) => {
 
 /**
  * @route POST /athletes
- * @description create a new athlete (bio, dob, height, weight, positions = [], nationality = "nigerian")
+ * @description create a new athlete
+ * @param {String} (bio, nationality)
+ * @param {Number}  (height, weight)
+ * @param {Date}  dob
+ * @param {String[]} positions
+ * @tutorial should_use_authMiddleware,
  */
 
-router.post("/athletes", async (req, res, next) => {
+router.post("/", upload.single("profilePic"), async (req, res, next) => {
   try {
-    const {
-      bio,
-      dob,
-      height,
-      weight,
-      positions = [],
-      nationality = "nigerian",
-    } = req.body;
-
     const { userId: user } = req.session;
     if (!user) {
       return res.status(403).json({
@@ -122,76 +119,51 @@ router.post("/athletes", async (req, res, next) => {
       });
     }
 
-    const currentAthlete = await Athlete.findOne({ user });
-    if (currentAthlete) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "athlete profile exists already, try editing it `PUT /athlete/:id`",
-        data: {
-          currentAthlete,
-        },
-      });
-    }
-
-    const newAthlete = new Athlete({
-      user,
-      bio,
-      dob: new Date(dob),
-      physical: {
-        height: parseInt(height),
-        weight: parseInt(weight),
-      },
-      positions,
-      nationality,
-    });
-
-    await newAthlete.save();
-
-    return res.status(201).json({
-      success: true,
-      message: "new athlete profile created",
-      data: {
-        newAthlete,
-      },
-    });
-  } catch (err) {
-    next(err);
-  }
-});
-
-/**
- * @route PUT /athletes/:id
- * @description edit athlete profile
- * @params (bio, dob, height, weight, positions = [], nationality = "nigerian")
- */
-
-router.put(["/athlete/:id", "/athlete/"], async (req, res, next) => {
-  try {
     const { bio, dob, height, weight, positions, nationality } = req.body;
 
-    const { userId: user } = req.session;
-    if (!user) {
-      return res.status(403).json({
-        success: false,
-        message: "user not logged in",
-      });
+    const { profilePic } = req.file;
+
+    // let cloudinaryUpload;
+    if (profilePic) {
+      // cloudinaryUpload = cloudinary.upload(
+      //   profilePic.path,
+      //   (err, result) => {
+      //     if (err) {
+      //       throw new Error("Error uploading image to cloudinary");
+      //     }
+      //     return result;
+      //   }
+      // );
+      // console.log("cloudinaryUpload", cloudinaryUpload);
     }
 
     const updates = {};
 
-    if (bio || dob || height || weight || nationality) {
+    if (
+      bio ||
+      dob ||
+      height ||
+      weight ||
+      nationality ||
+      profilePic ||
+      cloudinaryUpload
+    ) {
       updates.$set = {};
+
       if (bio) updates.$set.bio = bio;
       if (dob) updates.$set.dob = new Date(dob);
       if (height) updates.$set["physical.height"] = parseInt(height);
       if (weight) updates.$set["physical.weight"] = parseInt(weight);
       if (nationality) updates.$set.nationality = nationality.toLowerCase();
+      // if (cloudinaryUpload) updates.$set.profilePic =  cloudinaryUpload.url;
+      if (profilePic) updates.$set.profilePic = profilePic.path;
     }
+
     if (positions) {
       const positionsArray = Array.isArray(positions) ? positions : [positions];
       updates.$addToSet = { positions: { $each: positionsArray } };
     }
+
     const updatedAthlete = await Athlete.findOneAndUpdate(
       { $or: [{ _id: user }, { user }] },
       updates,
@@ -199,9 +171,28 @@ router.put(["/athlete/:id", "/athlete/"], async (req, res, next) => {
     );
 
     if (!updatedAthlete) {
-      return res.status(404).json({
-        success: false,
-        message: "athlete profile does not exist",
+      const newAthlete = new Athlete({
+        user,
+        bio,
+        dob: new Date(dob),
+        physical: {
+          height: parseInt(height),
+          weight: parseInt(weight),
+        },
+        positions,
+        nationality,
+        profilePic: profilePic.path,
+        // profilePic :  cloudinaryUpload.url;
+      });
+
+      await newAthlete.save();
+
+      return res.status(201).json({
+        success: true,
+        message: "new athlete profile created",
+        data: {
+          newAthlete,
+        },
       });
     }
 
@@ -218,4 +209,5 @@ router.put(["/athlete/:id", "/athlete/"], async (req, res, next) => {
   }
 });
 
-export default router;
+const athleteRoutes = router;
+export default athleteRoutes

@@ -5,9 +5,11 @@ import MongoStore from "connect-mongo";
 import morgan from "morgan";
 
 import connectDB from "./Config/db.js";
-import mainRoutes from "./Routes/main.routes.js";
 import errorHandler from "./Middlewares/error.middleware.js";
+
+import athleteRoutes from "./Routes/athlete.routes.js";
 import authRoutes from "./Routes/auth.routes.js";
+import scoutRoutes from "./Routes/scout.route.js";
 
 dotenv.config();
 const { PORT, MONGO_URI, SECRET_KEY } = process.env;
@@ -36,10 +38,12 @@ app.use(express.static("./Docs/"));
 
 app.use(errorHandler);
 
-app.use("/auth", authRoutes);
-app.use("/", mainRoutes);
 
 app.listen(PORT, () => {
   connectDB();
   console.log(`app listening on port ${PORT}`);
 });
+
+app.use("/auth", authRoutes);
+app.use("/athletes", athleteRoutes);
+app.use("/scout", scoutRoutes);

@@ -1,6 +1,6 @@
 import { mongoose } from "mongoose";
 
-const clubSchema = mongoose.Schema(
+const scoutSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -48,4 +48,5 @@ const clubSchema = mongoose.Schema(
   }
 );
 
-export default new mongoose.model("club", clubSchema)
+const Scout = new mongoose.model("scout", scoutSchema)
+export default Scout 
