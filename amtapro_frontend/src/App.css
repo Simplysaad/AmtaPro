@@ -1,6 +1,8 @@
  /* @import "tailwindcss" important; */
  @import "tailwindcss";
 
-/* button {
-  background: var(--color-red-500);
-} */
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
