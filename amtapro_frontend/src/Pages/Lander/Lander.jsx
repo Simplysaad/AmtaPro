@@ -4,6 +4,8 @@ import Header from '../Header'
 import Footer from '../Footer'
 import heroBg from '../../assets/hero-bg.jpg';
 import Footballers from '../Footballers/Footballers';
+import Academies from '../Academies/Academies';
+// import News from '../News/News';
 
 
 const Lander = () => {
@@ -15,6 +17,8 @@ const Lander = () => {
             <Header />
             <Hero />
             <Footballers />
+            <Academies />
+            {/* <News /> */}
             <Footer />
         </div>
     );

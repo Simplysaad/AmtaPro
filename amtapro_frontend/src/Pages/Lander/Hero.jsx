@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const Hero = () => {
+    const [text, setText] = useState("Talent")
+    const indexRef = useRef(0);
+    const keys = ["Talent", "Academy", "Team", "Passion", "Scout", "Highlight", "Profile"]
+    useEffect(() => {
+        const textInterval = setInterval(() => {
+            indexRef.current = (indexRef.current + 1) % keys.length;
+            setText(keys[indexRef.current])
+        }, 2000);
+
+        return () => clearInterval(textInterval)
+    })
+   
     return (
-        <div className="relative z-10 max-w-2xl w-full px-6 text-left">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 sm:max-w-[70%] w-3/4">
-                Showcase your <span className="text-green-400">Football Talent</span> to the world.
+        <div className="">
+            <h1 className="">
+                Showcase your <span className="">Football {text}</span> to the world.
             </h1>
-            <p className="text-lg mb-10 font-medium drop-shadow">
+            <p className="">
                 Create a profile, share your highlights, and connect with scouts, teams, and academies worldwide.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-                <button className="p-8 cursor-pointer font-semibold shadow-lg transition">
+            <div className="">
+                <button className="">
                     I'm a Talent
                 </button>
-                <button className="p-8 cursor-pointer text-green-700 font-semibold shadow-lg transition">
+                <button className="">
                     Hire a Talent
                 </button>
             </div>
