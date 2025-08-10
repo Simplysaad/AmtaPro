@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const Hero = () => {
     const [text, setText] = useState("Talent")
     const indexRef = useRef(0);
-    const keys = ["Talent", "Academy", "Team", "Passion", "Scout", "Highlight", "Profile"]
+    const keys = ["Talent", "Academy", "Team", "Passion", "Scout", "Highlights", "Profile"]
     useEffect(() => {
         const textInterval = setInterval(() => {
             indexRef.current = (indexRef.current + 1) % keys.length;
