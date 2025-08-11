@@ -1,10 +1,10 @@
 export const data = [
     {
-        // id: "1",
+        id: "1",
         username: "Jake",
         height: "12",
         gender: "male",
-        // location: "Nigeria",
+        location: "Nigeria",
         age: "18",
         position: "striker"
     },
@@ -14,12 +14,12 @@ export const data = [
         height: "15",
         gender: "female",
         location: "Libya",
-        // age: "21",
+        age: "21",
         position: "Midfielder"
     },
     {
         id: "3",
-        // username: "mechseiko",
+        username: "mechseiko",
         height: "14",
         gender: "male",
         location: "Magadascar",
@@ -30,7 +30,7 @@ export const data = [
         id: "4",
         username: "qowiyah",
         height: "14",
-        // gender: "female",
+        gender: "female",
         location: "Ghana",
         age: "25",
         position: "defender"

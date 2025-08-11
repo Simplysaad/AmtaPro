@@ -67,7 +67,7 @@ return(
         (
             () => {
                 const filteredData = newData
-                .filter(footballer => !username || footballer.username?.toLowerCase().includes(username))
+                .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
                 .filter(footballer => !height || footballer.height?.includes(height))
                 .filter(footballer => !age || footballer.age?.includes(age))
                 .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))

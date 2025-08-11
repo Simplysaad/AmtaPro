@@ -6,6 +6,7 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  cursor: none;
 }
 body {
   margin: 0;
@@ -14,4 +15,18 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+}
+.cursor{
+  width: 25px;
+  height: 25px;
+  border-radius: 40%;
+  background-image: url("./assets/cursor.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 9999;
+  position: fixed;
 }
