@@ -30,7 +30,7 @@ const Footballers = () => {
     
 return(
     <div>
-        <h1>Search Footballers</h1>
+        <h1 className='underline'>Search Footballers</h1>
         <form action="">
             <input placeholder="Name" type="text" onChange={name=>setUsername(name.target.value)}/>
             <input placeholder="Height" type="number" onChange={height=>setHeight(height.target.value)}/>

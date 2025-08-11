@@ -10,7 +10,7 @@
   width: 25px;
   height: 25px;
   border-radius: 40%;
-  background-image: url("./assets/cursor.jpeg");
+  background-image: url("./assets/ball.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,7 +19,11 @@
   border-radius: 50%;
   z-index: 9999;
   position: fixed;
+  /* animation: 1s rotate 0s linear infinite  */
 }
+
+@keyframes rotate {from{transform: rotate(0deg);}to{transform: rotate(360deg);}}
+
 @media screen and (max-width: 750px) {
   .cursor{
     display: none;

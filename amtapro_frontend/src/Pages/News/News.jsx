@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import Loader from "../Loader";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -14,16 +15,18 @@ const News = () => {
       .catch(() => setLoading(false))
       .catch((err) => console.log(err));
   }, []);
+  console.log("News: ", news)
+  
 
   if (loading) {
     return <div className="">
-      Fetching latest football news
+      Loading...
     </div>
   }
 
   return (
     <div className="">
-      <h2 className="">Latest News</h2>
+      <h2 className="underline">Latest News</h2>
       <div className="">
         {news.map((article) => (
           <a
@@ -47,7 +50,12 @@ const News = () => {
               <span className="">{article.pubDate}</span>
             </div>
           </a>
-        ))}
+        ))
+        // : 
+        // <div>
+        //   <h1>Connect to the internet to get the latest football news</h1>
+        // </div>
+        }
       </div>
     </div>
   );
