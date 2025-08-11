@@ -1,20 +1,10 @@
  /* @import "tailwindcss" important; */
  @import "tailwindcss";
-
+ @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
  *{
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
   cursor: none;
-}
-body {
-  margin: 0;
-}
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
 }
 .cursor{
   width: 25px;
@@ -29,4 +19,9 @@ body {
   border-radius: 50%;
   z-index: 9999;
   position: fixed;
+}
+@media screen and (max-width: 750px) {
+  .cursor{
+    display: none;
+  }
 }

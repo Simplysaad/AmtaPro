@@ -9,7 +9,7 @@ const Navbar = () => {
   const links = [
     { name: "Field", to: "#" },
     { name: "About", to: "#" },
-    { name: "News", to: "/news" },
+    { name: "News", to: "#" },
     { name: "Footballers", to: "/footballers" },
     { name: "Academies", to: "/academies" },
     { name: "Support", to: "#" },
@@ -21,39 +21,52 @@ const Navbar = () => {
 
       {/* DESKTOP NAV */}
       <div className="">
-        <img src={logo} className='rounded-full size-15 m-10' alt="AmtaPro-Logo" />
-        
-        <div className="hidden md:flex">
-          <ul className="">
-            {links.map((link) => (
-              <li key={link.name}>
-                <Link
-                  to={link.to}
-                  className=""
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="md:p-2"></div>
+        <div className="pl-20 pr-20">
+          <header className="hidden rounded-full sticky top-[0px] z-9998 p-3 md:flex text-center justify-between bg-[#fff] pl-12 pr-12">
+              <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
+              <ul className="flex pt-4">
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.to}
+                      className="m-3 p-1 rounded-full hover:text-[#81C13E] hover:underline"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="flex justify-between">
+                <button className="text-[#02342B] bg-[#81C13E] p-1 m-1 md:p-2 md:m-2 hover:bg-[#02342B] hover:text-[#81C13E]">
+                  Login
+                </button>
+                <button className="text-[#02342B] border-2 border-[#81C13E] p-1 m-1 md:p-2 md:m-2 hover:bg-[#02342B] hover:text-[#81C13E] hover:border-0">
+                  Sign Up
+                </button>
+              </div>
+          </header>
           
-          <div className="">
-            <button className="">
-              Login
-            </button>
-            <button className="">
-              Sign Up
-            </button>
-          </div>
         </div>
 
+        <div className="p-2 md:hidden"></div>
+        <div className="pl-5 pr-5 sm:hidden md:hidden xl:hidden 2xl:hidden">
+          <header className="flex justify-between bg-[#fff] p-2 rounded-full sticky top-[0px] pl-5 pr-5">
+            <img src={logo} className='rounded-full size-10' alt="AmtaPro-Logo" />
+            <button
+              className="md:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? 
+                <X size={28} />
+              : 
+                <Menu size={28} />
+              }
+            </button>
+          </header>
+        </div>
         
-        <button
-          className="md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
       </div>
 
       
@@ -61,7 +74,7 @@ const Navbar = () => {
 
       {/* MOBILE NAV */}
       {isOpen && (
-        <div className="md:hidden">
+        <div className="sm:hidden md:hidden xl:hidden 2xl:hidden">
           <ul className="">
             {links.map((link) => (
               <li key={link.name}>

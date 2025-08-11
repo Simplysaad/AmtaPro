@@ -5,20 +5,20 @@ import Footer from '../Footer'
 import heroBg from '../../assets/hero-bg.jpg';
 import Footballers from '../Footballers/Footballers';
 import Academies from '../Academies/Academies';
-// import News from '../News/News';
+import News from '../News/News';
 
 
 const Lander = () => {
     return (
         <div
-            className="relative h-[70vh] bg-cover bg-center sm:h-screen"
-            // style={{ backgroundImage: `url(${heroBg})` }}
+            className="bg-cover bg-center h-screen"
+            style={{ backgroundImage: `url(${heroBg})` }}
         >
             <Header />
             <Hero />
             <Footballers />
             <Academies />
-            {/* <News /> */}
+            <News />
             <Footer />
         </div>
     );
