@@ -11,17 +11,17 @@ import News from '../News/News';
 const Lander = () => {
     return (
         <div>
-            
+            <Header />
             <div
                 className='bg-cover bg-center'
                 style={{ backgroundImage: `url(${heroBg})` }}
             >
-                <Header />
+                
                 <Hero />
             </div>
             
             <Footballers />
-            <Academies />
+            {/* <Academies /> */}
             <News />
             <Footer />
         </div>

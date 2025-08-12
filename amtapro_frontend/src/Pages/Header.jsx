@@ -13,6 +13,7 @@ const Navbar = () => {
     { name: "Field", to: "#" },
     { name: "About", to: "#" },
     { name: "News", to: "/news" },
+    { name: "Footballers", to: "/footballers" },
     { name: "Support", to: "#" },
     { name: "Contact", to: "#" },
   ];

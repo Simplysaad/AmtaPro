@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {data} from './footballerData'
 
-
 const Footballers = () => {
     const [username, setUsername] = useState("")
     const [height, setHeight] = useState("")
@@ -14,11 +13,14 @@ const Footballers = () => {
 
     let locations = [];
     let positions = [];
+    let footballers = [];
     data.forEach(footballer => {
         locations.push(footballer.location)
         locations = [...new Set(locations)]
         positions.push(footballer.position)
         positions = [...new Set(positions)]
+        footballers.push(footballer.username)
+        footballers = [...new Set(footballers)]
     })
 
     const genderChange = (e) => {
@@ -29,14 +31,21 @@ const Footballers = () => {
 
     
 return(
-    <div>
-        <h1 className='underline'>Search Footballers</h1>
-        <form action="">
-            <input placeholder="Name" type="text" onChange={name=>setUsername(name.target.value)}/>
-            <input placeholder="Height" type="number" onChange={height=>setHeight(height.target.value)}/>
-            <input placeholder="Age" type="number" onChange={age=>setAge(age.target.value)}/>
+    <div className="min-h-screen bg-white text-green-800 p-6">
+        <h1 className='text-3xl font-bold text-center mb-6'>Start Searching Through {footballers.length - 1}+ Footballers</h1>
+        
+        <form action="" className="bg-green-100 border border-green-700 rounded-lg p-6 mb-8 shadow-md grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="col-span-1 md:col-span-2">
+                <label htmlFor="genders" className="block mb-1 font-semibold">Gender</label>
+                <select title="Select a Gender" id="genders" value={gender} onChange={genderChange} className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option value="">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
 
-            <input title="Select a Position" placeholder="Position" type="text" id="positionInput" list="positions" onChange={position=>setPosition(position.target.value)}/>
+            <label htmlFor="position">Position</label>
+            <input title="Select a Position" placeholder="Position" type="text" id="position" list="positions" onChange={position=>setPosition(position.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
             <datalist id="positions">
                 {
                     positions.map((position, index) => (
@@ -45,7 +54,8 @@ return(
                 }
             </datalist>
 
-            <input title="Select a Location" placeholder="Location" type="text" list="locations" onChange={location=>setLocation(location.target.value)}/>
+            <label htmlFor="location">Location</label>
+            <input title="Select a Location" placeholder="Location" type="text" id="location" list="locations" onChange={location=>setLocation(location.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
             <datalist id="locations">
                 {
                     locations.map((location, index) => (
@@ -54,12 +64,14 @@ return(
                 }
             </datalist>
 
-            <label htmlFor="genders">Filter by gender</label>
-            <select title="Select a Gender" id="genders" value={gender} onChange={genderChange}>
-                <option value="">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+            <label htmlFor="name">Name</label>
+            <input placeholder="Name" id="name" type="text" onChange={name=>setUsername(name.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            
+            <label htmlFor="height">Height</label>
+            <input placeholder="Height" type="number" id="height" onChange={height=>setHeight(height.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            
+            <label htmlFor="age">Age</label>
+            <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
         </form>
     
 
@@ -74,20 +86,46 @@ return(
                 .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 
                 if (filteredData.length === 0) {
-                    return <h2>No such player was found</h2>;
+                    return <h2 className="text-center text-red-600 font-semibold">No such player was found</h2>;
                 }
 
                 return filteredData.map(footballer => (
-                    <article key={footballer.id}>
-                        {footballer.id !== undefined && footballer.id !== "" && <h1>Id: {footballer.id}</h1>}
-                        {footballer.username && <h1>Footballer: {footballer.username}</h1>}
-                        {footballer.height && <h2>Height: {footballer.height}</h2>}
-                        {footballer.gender && <h3>Gender: {footballer.gender}</h3>}
-                        {footballer.location && <h4>Location: {footballer.location}</h4>}
-                        {footballer.age && <h5>Age: {footballer.age}</h5>}
-                        {footballer.position && <h6>Position: {footballer.position}</h6>}
-                        <hr />
+                    <article
+                        key={footballer.id}
+                        className="bg-white border-l-4 border-green-600 text-green-900 p-6 my-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                        >
+                        {footballer.username && (
+                            <h1 className="text-2xl font-bold text-green-800 mb-3">Footballer: {footballer.username}</h1>
+                        )}
+                        {footballer.height && (
+                            <h2 className="text-base font-medium mb-1">Height: {footballer.height}</h2>
+                        )}
+                        {footballer.gender && (
+                            <h3 className="text-base mb-1">Gender: {footballer.gender}</h3>
+                        )}
+                        {footballer.location && (
+                            <h4 className="text-base mb-1">Location: {footballer.location}</h4>
+                        )}
+                        {footballer.age && (
+                            <h5 className="text-sm mb-1">Age: {footballer.age}</h5>
+                        )}
+                        {footballer.position && (
+                            <h6 className="text-sm italic mb-1">Position: {footballer.position}</h6>
+                        )}
+                        <hr className="mt-4 border-green-300" />
                     </article>
+
+
+// {/* <article key={footballer.id}>
+//     {footballer.id !== undefined && footballer.id !== "" && <h1>Id: {footballer.id}</h1>}
+//     {footballer.username && <h1>Footballer: {footballer.username}</h1>}
+//     {footballer.height && <h2>Height: {footballer.height}</h2>}
+//     {footballer.gender && <h3>Gender: {footballer.gender}</h3>}
+//     {footballer.location && <h4>Location: {footballer.location}</h4>}
+//     {footballer.age && <h5>Age: {footballer.age}</h5>}
+//     {footballer.position && <h6>Position: {footballer.position}</h6>}
+//     <hr />
+// </article> */}
                 ));
             }
         )()

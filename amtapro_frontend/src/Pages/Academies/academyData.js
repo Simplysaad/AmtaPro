@@ -27,4 +27,11 @@ export const data = [
         email: "example@gmail.com",
         socialLink: "socialLink"
     },
+    {
+        id: "5",
+        name: "Academy",
+        location: "Nigeria",
+        email: "example@gmail.com",
+        socialLink: "socialLink"
+    }
 ]
