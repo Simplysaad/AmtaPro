@@ -35,7 +35,6 @@ const Footballers = () => {
     // .filter(footballer => !age || footballer.age?.includes(age))
     .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
     .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
-
 return(
     <div className="min-h-screen bg-white text-green-800 p-6">
         <h1 className='text-3xl font-bold text-center mb-6'>Start Searching Through {footballers.length - 1}+ Footballers</h1>
