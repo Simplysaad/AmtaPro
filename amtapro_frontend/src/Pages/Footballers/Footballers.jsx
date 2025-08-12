@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {data} from './footballerData'
 
 const Footballers = () => {
-    const [username, setUsername] = useState("")
-    const [height, setHeight] = useState("")
-    const [age, setAge] = useState("")
+    // const [username, setUsername] = useState("")
+    // const [height, setHeight] = useState("")
+    // const [age, setAge] = useState("")
     const [position, setPosition] = useState("")
     const [location, setLocation] = useState("")
     const [gender, setGender] = useState("")
@@ -64,14 +64,14 @@ return(
                 }
             </datalist>
 
-            <label htmlFor="name">Name</label>
+            {/* <label htmlFor="name">Name</label>
             <input placeholder="Name" id="name" type="text" onChange={name=>setUsername(name.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
             
             <label htmlFor="height">Height</label>
             <input placeholder="Height" type="number" id="height" onChange={height=>setHeight(height.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
             
             <label htmlFor="age">Age</label>
-            <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
+            <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/> */}
         </form>
     
 
@@ -79,9 +79,9 @@ return(
         (
             () => {
                 const filteredData = newData
-                .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
-                .filter(footballer => !height || footballer.height?.includes(height))
-                .filter(footballer => !age || footballer.age?.includes(age))
+                // .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
+                // .filter(footballer => !height || footballer.height?.includes(height))
+                // .filter(footballer => !age || footballer.age?.includes(age))
                 .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
                 .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 
