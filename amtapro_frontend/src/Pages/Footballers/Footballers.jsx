@@ -29,7 +29,13 @@ const Footballers = () => {
         genderValue === "" ? setNewData(data) : setNewData(data.filter(footballer => footballer.gender === genderValue))
     }
 
-    
+    const filteredData = newData
+    // .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
+    // .filter(footballer => !height || footballer.height?.includes(height))
+    // .filter(footballer => !age || footballer.age?.includes(age))
+    .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
+    .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
+
 return(
     <div className="min-h-screen bg-white text-green-800 p-6">
         <h1 className='text-3xl font-bold text-center mb-6'>Start Searching Through {footballers.length - 1}+ Footballers</h1>
@@ -72,50 +78,49 @@ return(
             
             <label htmlFor="age">Age</label>
             <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/> */}
+            <h1 className='text-black font-bold'>{filteredData.length} footballers found</h1>
         </form>
+
     
 
     {
         (
             () => {
-                const filteredData = newData
-                // .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
-                // .filter(footballer => !height || footballer.height?.includes(height))
-                // .filter(footballer => !age || footballer.age?.includes(age))
-                .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
-                .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
-
+            
                 if (filteredData.length === 0) {
                     return <h2 className="text-center text-red-600 font-semibold">No such player was found</h2>;
                 }
 
                 return filteredData.map(footballer => (
-                    <div className='text-center border- ml-20 mr-20 justify-around md:flex flex-col md:flex-row items-center'>
-                        <img className='rounded-full md:size-25 size-20' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt="profile"/>
+                    <div className='md:border-2 rounded-4xl border-green-900 mb-10 text-center md:ml-20 md:mr-20 justify-around md:flex flex-col md:flex-row items-center'>
+                        <div className='md:w-[50%] items-center justify-center text-center flex'>
+                            <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt="profile"/>
+                        </div>
+
+                        <div className='rounded-4xl bg-green-900 md:w-[50%]'>
                         <article
                             key={footballer.id}
-                            className="rounded-t-4xl bg-green-900 text-white p-10 my-6 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300"
+                            className="text-white p-10"
                             >
-                                
                             {footballer.username && (
-                                <h1 className="text-2xl font-bold mb-3">{footballer.username}</h1>
+                                <h1 className="text-3xl font-bold mb-3">{footballer.username}</h1>
                             )}
+                            <hr className='mb-2'/>
                             {footballer.height && (
-                                <h2 className="text-base font-medium mb-1">Height: {footballer.height}</h2>
-                            )}
-                            {footballer.gender && (
-                                <h3 className="text-base mb-1">Gender: {footballer.gender}</h3>
+                                <h2 className="text-base font-medium mb-2">Height: {footballer.height}</h2>
                             )}
                             {footballer.location && (
-                                <h4 className="text-base mb-1">Location: {footballer.location}</h4>
+                                <h4 className="text-base mb-2">Location: {footballer.location}</h4>
                             )}
                             {/* {footballer.age && (
                                 <h5 className="text-sm mb-1">Age: {footballer.age}</h5>
                             )} */}
                             {footballer.position && (
-                                <h6 className="text-sm italic mb-1">Position: {footballer.position}</h6>
+                                <h6 className="text-sm italic mb-2">Position: {footballer.position}</h6>
                             )}
+                            <h1 className='text-bold underline'>&copy; AmtaPro</h1>
                         </article>
+                        </div>
                     </div>
 
 
