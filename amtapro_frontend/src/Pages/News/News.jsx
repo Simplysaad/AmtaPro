@@ -15,7 +15,6 @@ const News = () => {
       .catch(() => setLoading(false))
       .catch((err) => console.log(err));
   }, []);
-  console.log("News: ", news)
   
 
   if (loading) {
@@ -28,7 +27,7 @@ const News = () => {
     <div className="">
       <h2 className="underline">Latest News</h2>
       <div className="">
-        {news.map((article) => (
+        {!news.length === 0 ? news.map((article) => (
           <a
             key={article.article_id}
             href={article.link}
@@ -51,10 +50,10 @@ const News = () => {
             </div>
           </a>
         ))
-        // : 
-        // <div>
-        //   <h1>Connect to the internet to get the latest football news</h1>
-        // </div>
+        : 
+        <div>
+          <h1>Connect to the internet to get the latest football news</h1>
+        </div>
         }
       </div>
     </div>
