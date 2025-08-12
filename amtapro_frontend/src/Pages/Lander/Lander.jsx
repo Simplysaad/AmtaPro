@@ -16,13 +16,9 @@ const Lander = () => {
                 className='bg-cover bg-center'
                 style={{ backgroundImage: `url(${heroBg})` }}
             >
-                
                 <Hero />
             </div>
-            
             <Footballers />
-            {/* <Academies /> */}
-            <News />
             <Footer />
         </div>
     );

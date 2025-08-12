@@ -97,14 +97,5 @@ export const data = [
     location: "Rwanda",
     age: "23",
     position: "midfielder"
-  },
-  {
-    id: 12,
-    username: "Esther",
-    height: "17",
-    gender: "female",
-    location: "Burkina Faso",
-    age: "22",
-    position: "keeper"
-  },
+  }
 ];

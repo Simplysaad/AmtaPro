@@ -10,10 +10,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "Field", to: "#" },
+    { name: "Field", to: "/" },
     { name: "About", to: "#" },
     { name: "News", to: "/news" },
-    { name: "Footballers", to: "/footballers" },
     { name: "Support", to: "#" },
     { name: "Contact", to: "#" },
   ];
@@ -25,7 +24,7 @@ const Navbar = () => {
 
         {/* OPENED MOBILE NAV */}
           {isOpen && (
-            <div className=" p-5 bg-white sm:hidden md:hidden xl:hidden 2xl:hidden text-center items-center">
+            <div className=" p-5 bg-white md:hidden xl:hidden 2xl:hidden text-center items-center">
               <div className="flex justify-between text-center items-center">
                 <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
                 <button
@@ -71,8 +70,8 @@ const Navbar = () => {
 
         {/* DESKTOP NAV */}
         <div className="md:p-1"></div>
-        <div className="pl-16 pr-16">
-          <header className="hidden rounded-full p-3 md:flex text-center justify-between bg-[#fff] pl-10 pr-10">
+        <div className="pl-12 pr-12">
+          <header className="hidden rounded-full p-2.5 md:flex text-center justify-between bg-[#fff] pl-10 pr-10">
               <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
               <ul className="flex pt-4">
                 {links.map((link) => (
@@ -102,7 +101,7 @@ const Navbar = () => {
           !isOpen && 
             <div>
               <div className="p-1 md:hidden"></div>    
-                <div className="pl-5 pr-5 sm:hidden md:hidden">
+                <div className="pl-5 pr-5 md:hidden">
                 <header className="flex justify-between bg-[#fff] p-2 rounded-full pl-5 pr-5">
                   <img src={logoM} className='rounded-full size-10' alt="AmtaPro-Logo" />
                   <button
