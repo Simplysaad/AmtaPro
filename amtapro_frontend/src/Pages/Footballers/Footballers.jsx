@@ -99,9 +99,9 @@ return(
                     <div key={footballer.id} className='md:border-2 rounded-4xl border-green-900 mb-10 text-center md:ml-20 md:mr-20 justify-around md:flex flex-col md:flex-row items-center'>
                         <div className='md:w-[50%] items-center justify-center text-center flex'>
                             {
-                                footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`male player`}/>
+                                footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
                                 :
-                                footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`female player`}/>
+                                footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
                                 : 
                                 <div className='border-5 border-green-900 bg-green-900 rounded-full md:size-35 size-30 mb-[-40px]'></div>
                             }
