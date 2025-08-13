@@ -9,16 +9,17 @@ const News = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://newsdata.io/api/1/latest?apikey=pub_76721095d5d5424bbbf53d1c2e296545&q=football&language=en")
+    fetch("https://newsdata.io/api/1/latest?apikey=pub_7e534d5ceb714fa68c72afa60bb28b77&q=football&language=en")
       .then((res) => res.json())
       .then((data) => {
-        setNews(data.results || []);
-        setNews(...new Set(news))
+        setNews([...new Set(data.results || [])]);
         setLoading(false);
       })
       .catch(() => setLoading(false))
       .catch((err) => console.log(err));
   }, []);
+  console.log(news)
+  console.log(news.length)
   
 
   if (loading) {
@@ -35,7 +36,7 @@ const News = () => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <h2 className="text-3xl font-bold text-green-700 mb-6 decoration-green-500">Latest Football News</h2>
         <div className="grid gap-6 sm:grid-cols-1">
-          {Array.isArray(news) && news.length > 0 ? news.map((article) => (
+          {news.length > 0 ? news.map((article) => (
             <a
               key={article.article_id}
               href={article.link}

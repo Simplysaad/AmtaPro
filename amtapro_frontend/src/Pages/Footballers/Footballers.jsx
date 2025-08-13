@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {data} from './footballerData'
+import FindATalent from '../Buttons/FindATalent';
 
 const Footballers = () => {
     // const [username, setUsername] = useState("")
@@ -77,7 +78,11 @@ return(
             
             <label htmlFor="age">Age</label>
             <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/> */}
-            <h1 className='text-black font-bold'>{filteredData.length} footballers found</h1>
+            {
+                filteredData.length == 1 || filteredData.length == 0  ? <h1 className='text-black font-bold'>{filteredData.length} footballer found</h1>
+                :
+                <h1 className='text-black font-bold'>{filteredData.length} footballers found</h1>
+            }
         </form>
 
     
@@ -91,7 +96,7 @@ return(
                 }
 
                 return filteredData.map(footballer => (
-                    <div className='md:border-2 rounded-4xl border-green-900 mb-10 text-center md:ml-20 md:mr-20 justify-around md:flex flex-col md:flex-row items-center'>
+                    <div key={footballer.id} className='md:border-2 rounded-4xl border-green-900 mb-10 text-center md:ml-20 md:mr-20 justify-around md:flex flex-col md:flex-row items-center'>
                         <div className='md:w-[50%] items-center justify-center text-center flex'>
                             <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt="profile"/>
                         </div>
@@ -117,7 +122,7 @@ return(
                             {footballer.position && (
                                 <h6 className="text-sm italic mb-2">Position: {footballer.position}</h6>
                             )}
-                            <h1 className='text-bold underline'>&copy; AmtaPro</h1>
+                            <button className='underline p-3'>Go to Profile</button>
                         </article>
                         </div>
                     </div>
