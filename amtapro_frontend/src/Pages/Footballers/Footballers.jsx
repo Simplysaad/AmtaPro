@@ -108,7 +108,7 @@ return(
                                     }
                                 </div>
 
-                                <div className='rounded-4xl bg-green-900 md:w-[50%]'>
+                                <div className='rounded-4xl bg-green-500 md:w-[50%]'>
                                     <article
                                         key={footballer.id}
                                         className="text-white p-10"
