@@ -18,7 +18,7 @@ const Hero = () => {
    
     return (
         <div 
-            className='mt-[-100px] md:pl-20 sm:pt-30 pt-30 p-5 md:*:mb-12 *:mb-7 md:text-left text-center items-center justify-center'>
+            className='mt-[-100px] md:pl-20 sm:pt-30 pt-30 p-5 md:*:mb-12 *:mb-7 xl:w-[70%] md:text-left text-center items-center justify-center'>
             <h1 className="text-[#FAFAFA] sm:text-8xl text-bold text-6xl">
                 Showcase your <span className="text-[#81C13E]">Football {text}</span> to the world.
             </h1>

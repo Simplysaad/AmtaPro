@@ -9,7 +9,6 @@ const Footballers = () => {
     const [position, setPosition] = useState("")
     const [location, setLocation] = useState("")
     const [gender, setGender] = useState("")
-    
     const [newData, setNewData] = useState(data)
 
     let locations = [];
@@ -37,8 +36,8 @@ const Footballers = () => {
     .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
     .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 return(
-    <div className="min-h-screen bg-white text-green-800 p-6">
-        <h1 className='text-3xl font-bold text-center mb-6'>Start Searching Through {footballers.length - 1}+ Footballers</h1>
+    <div className="bg-white text-green-800 p-6">
+        <h1 className='text-4xl font-bold text-center mb-6 shadow-2xl'>Start Searching Through {footballers.length - 1}+ Footballers</h1>
         
         <form action="" className="bg-green-100 border border-green-700 rounded-lg p-6 mb-8 sm:mr-30 sm:ml-30  shadow-md grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="col-span-1 md:col-span-2">
@@ -50,25 +49,27 @@ return(
                 </select>
             </div>
 
-            <label htmlFor="position">Position</label>
-            <input title="Select a Position" placeholder="Position" type="text" id="position" list="positions" onChange={position=>setPosition(position.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
-            <datalist id="positions">
-                {
-                    positions.map((position, index) => (
-                        <option key={index} value={position}>{position}</option>
-                    ))
-                }
-            </datalist>
+            <div className="col-span-1 md:col-span-2">
+                <label htmlFor="positions" className="block mb-1 font-semibold">Position</label>
+                <select title="Select a Position" id="positions" onChange={position=>setPosition(position.target.value)} className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                    {
+                        positions.map((position, index) => (
+                            <option key={index} value={position}>{position}</option>
+                        ))
+                    }
+                </select>
+            </div>
 
-            <label htmlFor="location">Location</label>
-            <input title="Select a Location" placeholder="Location" type="text" id="location" list="locations" onChange={location=>setLocation(location.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
-            <datalist id="locations">
-                {
-                    locations.map((location, index) => (
-                        <option key={index} value={location}>{location}</option>
-                    ))
-                }
-            </datalist>
+            <div className="col-span-1 md:col-span-2">
+                <label htmlFor="location" className="block mb-1 font-semibold">Location</label>
+                <select title="Select a Location" id="locations" onChange={location=>setLocation(location.target.value)} className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500">
+                    {
+                        locations.map((location, index) => (
+                            <option key={index} value={location}>{location}</option>
+                        ))
+                    }
+                </select>
+            </div>
 
             {/* <label htmlFor="name">Name</label>
             <input placeholder="Name" id="name" type="text" onChange={name=>setUsername(name.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/>
@@ -86,69 +87,54 @@ return(
         </form>
 
     
+        <div className='flex overflow-x-scroll'>
+            {
+                (
+                    () => {
+                    
+                        if (filteredData.length === 0) {
+                            return <h2 className="text-center text-red-600 font-semibold">No such player was found</h2>;
+                        }
 
-    {
-        (
-            () => {
-            
-                if (filteredData.length === 0) {
-                    return <h2 className="text-center text-red-600 font-semibold">No such player was found</h2>;
-                }
+                        return filteredData.map(footballer => (
+                            <div key={footballer.id} className='xl:min-w-lg min-w-full md:border-2 rounded-4xl m-5 border-green-900 text-center justify-between md:flex flex-col md:flex-row'>
+                                <div className='md:w-[50%] items-center text-center justify-center flex'>
+                                    {
+                                        footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
+                                        :
+                                        footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
+                                        : 
+                                        <div className='border-5 border-green-900 bg-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]'></div>
+                                    }
+                                </div>
 
-                return filteredData.map(footballer => (
-                    <div key={footballer.id} className='md:border-2 rounded-4xl border-green-900 mb-10 text-center md:ml-20 md:mr-20 justify-around md:flex flex-col md:flex-row items-center'>
-                        <div className='md:w-[50%] items-center justify-center text-center flex'>
-                            {
-                                footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
-                                :
-                                footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-35 size-30 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
-                                : 
-                                <div className='border-5 border-green-900 bg-green-900 rounded-full md:size-35 size-30 mb-[-40px]'></div>
-                            }
-                            
-                        </div>
-
-                        <div className='rounded-4xl bg-green-900 md:w-[50%]'>
-                        <article
-                            key={footballer.id}
-                            className="text-white p-10"
-                            >
-                            {footballer.username && (
-                                <h1 className="text-3xl font-bold mb-3">{footballer.username}</h1>
-                            )}
-                            <hr className='mb-2'/>
-                            {footballer.height && (
-                                <h2 className="text-base font-medium mb-2">Height: {footballer.height}</h2>
-                            )}
-                            {footballer.location && (
-                                <h4 className="text-base mb-2">Location: {footballer.location}</h4>
-                            )}
-                            {/* {footballer.age && (
-                                <h5 className="text-sm mb-1">Age: {footballer.age}</h5>
-                            )} */}
-                            {footballer.position && (
-                                <h6 className="text-sm italic mb-2">Position: {footballer.position}</h6>
-                            )}
-                            <button className='underline p-3'>Go to Profile</button>
-                        </article>
-                        </div>
-                    </div>
-
-
-// {/* <article key={footballer.id}>
-//     {footballer.id !== undefined && footballer.id !== "" && <h1>Id: {footballer.id}</h1>}
-//     {footballer.username && <h1>Footballer: {footballer.username}</h1>}
-//     {footballer.height && <h2>Height: {footballer.height}</h2>}
-//     {footballer.gender && <h3>Gender: {footballer.gender}</h3>}
-//     {footballer.location && <h4>Location: {footballer.location}</h4>}
-//     {footballer.age && <h5>Age: {footballer.age}</h5>}
-//     {footballer.position && <h6>Position: {footballer.position}</h6>}
-//     <hr />
-// </article> */}
-                ));
+                                <div className='rounded-4xl bg-green-900 md:w-[50%]'>
+                                    <article
+                                        key={footballer.id}
+                                        className="text-white p-10"
+                                        >
+                                        {footballer.username && (
+                                            <h1 className="text-3xl font-bold mb-3">{footballer.username}</h1>
+                                        )}
+                                        <hr className='mb-2'/>
+                                        {footballer.height && (
+                                            <h2 className="text-base font-medium mb-2">Height: {footballer.height}</h2>
+                                        )}
+                                        {footballer.location && (
+                                            <h4 className="text-base mb-2">Location: {footballer.location}</h4>
+                                        )}
+                                        {footballer.position && (
+                                            <h6 className="text-sm italic mb-2">Position: {footballer.position}</h6>
+                                        )}
+                                        <button className='underline p-3'>Go to Profile</button>
+                                    </article>
+                                </div>
+                            </div>
+                        ));
+                    }
+                )()
             }
-        )()
-    }
+        </div>
     </div>
 )
     
