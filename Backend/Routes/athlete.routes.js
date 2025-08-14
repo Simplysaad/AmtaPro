@@ -121,7 +121,7 @@ router.post("/", upload.single("profilePic"), async (req, res, next) => {
 
     const { bio, dob, height, weight, positions, nationality } = req.body;
 
-    const { profilePic } = req.file;
+    const profilePic = req.file;
 
     // let cloudinaryUpload;
     if (profilePic) {
@@ -160,7 +160,7 @@ router.post("/", upload.single("profilePic"), async (req, res, next) => {
     }
 
     if (positions) {
-      const positionsArray = Array.isArray(positions) ? positions : [positions];
+      const positionsArray = Array.isArray(positions) ? positions : positions.split(',').map(p => p.trim());
       updates.$addToSet = { positions: { $each: positionsArray } };
     }
 
@@ -179,9 +179,9 @@ router.post("/", upload.single("profilePic"), async (req, res, next) => {
           height: parseInt(height),
           weight: parseInt(weight),
         },
-        positions,
+        positions: Array.isArray(positions) ? positions : positions.split(',').map(p => p.trim()),
         nationality,
-        profilePic: profilePic.path,
+        profilePic: profilePic ? profilePic.path : null,
         // profilePic :  cloudinaryUpload.url;
       });
 

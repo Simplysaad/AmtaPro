@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import Session from "express-session";
 import MongoStore from "connect-mongo";
 import morgan from "morgan";
+import cors from "cors";
 
 import connectDB from "./Config/db.js";
 import errorHandler from "./Middlewares/error.middleware.js";
@@ -15,6 +16,11 @@ dotenv.config();
 const { PORT, MONGO_URI, SECRET_KEY } = process.env;
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 app.use(morgan("dev"));
 
@@ -33,6 +39,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(urlencoded({ extended: true }));
 
 app.use(express.static("./Docs/"));
 

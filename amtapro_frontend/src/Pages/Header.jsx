@@ -10,10 +10,11 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { name: "Field", to: "/" },
+    { name: "Home", to: "/" },
+    { name: "Footballers", to: "/footballers" },
+    { name: "Academies", to: "/academies" },
     { name: "About", to: "#" },
     { name: "News", to: "/news" },
-    { name: "Support", to: "#" },
     { name: "Contact", to: "#" },
   ];
 
