@@ -6,6 +6,7 @@ import heroBg from '../../assets/hero-bg.jpg'
 import Footballers from '../Footballers/Footballers';
 import Academies from '../Academies/Academies';
 import News from '../News/News';
+import Statistics from '../Statistics/Statistics';
 
 
 const Lander = () => {
@@ -18,6 +19,7 @@ const Lander = () => {
             >
                 <Hero />
             </div>
+            <Statistics />
             <Footballers />
             <Footer />
         </div>

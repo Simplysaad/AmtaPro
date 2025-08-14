@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {data} from './academyData'
+import {dataA} from './academyData'
 
 
 const Academies = () => {
@@ -7,7 +7,7 @@ return(
     <div>
         <h1 className='underline'>Search Academies</h1>
         {
-            data.map(academy => (
+            dataA.map(academy => (
                 
                 <article key={academy.id}>
                     <h1>Id: {academy.id}</h1>

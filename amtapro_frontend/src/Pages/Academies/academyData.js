@@ -1,4 +1,4 @@
-export const data = [
+export const dataA = [
     {
         id: "1",
         name: "Academy",
