@@ -24,6 +24,8 @@
     "dev": "nodemon index"
   },
   "dependencies": {
+    "@google/genai": "^1.14.0",
+    "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.2",
     "connect-mongo": "^5.1.0",
     "crypto": "^1.0.1",
