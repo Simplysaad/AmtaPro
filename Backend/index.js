@@ -52,6 +52,7 @@ app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
 });
 
+
 app.use("/auth", authRoutes);
-app.use("/athletes", athleteRoutes);
+app.use("/", athleteRoutes);
 app.use("/scout", scoutRoutes);
