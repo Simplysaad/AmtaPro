@@ -4,7 +4,6 @@ const upload = multer({ dest: "Uploads" });
 
 //import cloudinary from "../Utils/cloudinary.js";
 
-import Athlete from "../Models/athlete.model.js";
 // import User from "../Models/user.model.js";
 // import Scout from "../Models/scout.model.js"
 

@@ -1,3 +1,5 @@
+import Athlete from "../Models/athlete.model.js";
+
 export const getAthletes = async (req, res, next) => {
   try {
     let {
@@ -87,7 +89,7 @@ export const getSingleAthlete = async (req, res, next) => {
 
 export const createNewAthlete = async (req, res, next) => {
   try {
-    const { userId: user } = req.session;
+    const { userId: user = "6888e274d9b10841ec01b743" } = req.session;
     if (!user) {
       return res.status(403).json({
         success: false,
@@ -97,20 +99,17 @@ export const createNewAthlete = async (req, res, next) => {
 
     const { bio, dob, height, weight, positions, nationality } = req.body;
 
-    const profilePic = req.file;
+    const { profilePic = null } = req.file;
 
-    // let cloudinaryUpload;
+    let cloudinaryUpload;
     if (profilePic) {
-      // cloudinaryUpload = cloudinary.upload(
-      //   profilePic.path,
-      //   (err, result) => {
-      //     if (err) {
-      //       throw new Error("Error uploading image to cloudinary");
-      //     }
-      //     return result;
-      //   }
-      // );
-      // console.log("cloudinaryUpload", cloudinaryUpload);
+      cloudinaryUpload = cloudinary.upload(profilePic.path, (err, result) => {
+        if (err) {
+          throw new Error("Error uploading image to cloudinary");
+        }
+        return result;
+      });
+      console.log("cloudinaryUpload", cloudinaryUpload);
     }
 
     const updates = {};
@@ -136,7 +135,9 @@ export const createNewAthlete = async (req, res, next) => {
     }
 
     if (positions) {
-      const positionsArray = Array.isArray(positions) ? positions : positions.split(',').map(p => p.trim());
+      const positionsArray = Array.isArray(positions)
+        ? positions
+        : positions.split(",").map((p) => p.trim());
       updates.$addToSet = { positions: { $each: positionsArray } };
     }
 
@@ -155,7 +156,9 @@ export const createNewAthlete = async (req, res, next) => {
           height: parseInt(height),
           weight: parseInt(weight),
         },
-        positions: Array.isArray(positions) ? positions : positions.split(',').map(p => p.trim()),
+        positions: Array.isArray(positions)
+          ? positions
+          : positions.split(",").map((p) => p.trim()),
         nationality,
         profilePic: profilePic ? profilePic.path : null,
         // profilePic :  cloudinaryUpload.url;
