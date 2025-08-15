@@ -1,18 +1,4 @@
-import express, { Router } from "express";
-import multer from "multer";
-const upload = multer({ dest: "Uploads" });
-
-//import cloudinary from "../Utils/cloudinary.js";
-
-import Athlete from "../Models/athlete.model.js";
-// import User from "../Models/user.model.js";
-// import Scout from "../Models/scout.model.js"
-
-import authMiddleware from "../Middlewares/auth.middleware.js";
-
-const router = Router();
-
-router.get("/", async (req, res, next) => {
+export const getAthletes = async (req, res, next) => {
   try {
     let {
       positions,
@@ -74,9 +60,9 @@ router.get("/", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-router.get("/:id", async (req, res, next) => {
+export const getSingleAthlete = async (req, res, next) => {
   try {
     const { id: athleteId } = req.params;
     const { userId: currentUserId } = req.session;
@@ -97,19 +83,9 @@ router.get("/:id", async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
+};
 
-/**
- * @route POST /athletes
- * @description create a new athlete
- * @param {String} (bio, nationality)
- * @param {Number}  (height, weight)
- * @param {Date}  dob
- * @param {String[]} positions
- * @tutorial should_use_authMiddleware,
- */
-
-router.post("/", upload.single("profilePic"), async (req, res, next) => {
+export const createNewAthlete = async (req, res, next) => {
   try {
     const { userId: user } = req.session;
     if (!user) {
@@ -207,7 +183,4 @@ router.post("/", upload.single("profilePic"), async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-});
-
-const athleteRoutes = router;
-export default athleteRoutes
+};
