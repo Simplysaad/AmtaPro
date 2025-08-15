@@ -9,6 +9,41 @@ const News = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Using a more reliable news API or mock data for demo
+    const mockNews = [
+      {
+        article_id: '1',
+        title: 'African Football Talent Showcase 2024',
+        description: 'Young footballers from across Africa demonstrate their skills in the annual talent showcase, attracting scouts from major European clubs.',
+        image_url: 'https://images.pexels.com/photos/274506/pexels-photo-274506.jpeg',
+        link: '#',
+        pubDate: '2024-01-15'
+      },
+      {
+        article_id: '2',
+        title: 'Nigerian Academy Produces Next Generation Stars',
+        description: 'A football academy in Lagos has successfully trained over 50 players who now play professionally across different leagues worldwide.',
+        image_url: 'https://images.pexels.com/photos/1171084/pexels-photo-1171084.jpeg',
+        link: '#',
+        pubDate: '2024-01-14'
+      },
+      {
+        article_id: '3',
+        title: 'Women\'s Football Growing in Ghana',
+        description: 'The women\'s football scene in Ghana continues to grow with new academies and increased support from local communities.',
+        image_url: 'https://images.pexels.com/photos/1884574/pexels-photo-1884574.jpeg',
+        link: '#',
+        pubDate: '2024-01-13'
+      }
+    ];
+    
+    // Simulate API call
+    setTimeout(() => {
+      setNews(mockNews);
+      setLoading(false);
+    }, 1000);
+    
+    /* Original API call - commented out due to potential API issues
     fetch("https://newsdata.io/api/1/latest?apikey=pub_7e534d5ceb714fa68c72afa60bb28b77&q=football&language=en")
       .then((res) => res.json())
       .then((data) => {
@@ -17,6 +52,7 @@ const News = () => {
       })
       .catch(() => setLoading(false))
       .catch((err) => console.log(err));
+    */
   }, []);
 
   const keyWords = [

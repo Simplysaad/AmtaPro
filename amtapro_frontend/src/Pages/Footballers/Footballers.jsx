@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
-import {data} from './footballerData'
-import FindATalent from '../Buttons/FindATalent';
+import {data} from './footballerData';
+import Header from '../Header';
+import Footer from '../Footer';
+import Button from '../../components/ui/Button';
+import Select from '../../components/ui/Select';
+import { Search, Filter } from 'lucide-react';
 
 const Footballers = () => {
-    // const [username, setUsername] = useState("")
-    // const [height, setHeight] = useState("")
-    // const [age, setAge] = useState("")
+    const [searchTerm, setSearchTerm] = useState("");
     const [position, setPosition] = useState("")
     const [location, setLocation] = useState("")
     const [gender, setGender] = useState("")
+    const [showFilters, setShowFilters] = useState(false);
     const [newData, setNewData] = useState(data)
 
     let locations = [];
@@ -26,13 +29,11 @@ const Footballers = () => {
     const genderChange = (e) => {
         const genderValue = e.target.value
         setGender(genderValue);
-        genderValue === "" ? setNewData(data) : setNewData(data.filter(footballer => footballer.gender === genderValue))
+        setNewData(genderValue === "" ? data : data.filter(footballer => footballer.gender === genderValue))
     }
 
     const filteredData = newData
-    // .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
-    // .filter(footballer => !height || footballer.height?.includes(height))
-    // .filter(footballer => !age || footballer.age?.includes(age))
+    .filter(footballer => !searchTerm || footballer.username?.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
     .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 return(
@@ -80,17 +81,9 @@ return(
             <label htmlFor="age">Age</label>
             <input placeholder="Age" type="number" id="age" onChange={age=>setAge(age.target.value)} className="p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"/> */}
             {
-                filteredData.length == 1 || filteredData.length == 0  ? <h1 className='text-black font-bold'>{filteredData.length} result</h1>
+                filteredData.length == 1 || filteredData.length == 0  ? <h1 className='text-black font-bold'>{filteredData.length} footballer found</h1>
                 :
-                <h1 className='text-black font-bold'>{filteredData.length} results</h1>
-            }
-            <hr />
-            {
-                (gender || position || location) && (filteredData.length === 1 || filteredData.length === 0) ? 
-                <h1 className='text-black font-bold'>{filteredData.length > 0 ? filteredData.length : "No"} {gender} footballer playing {position} {location ? `from ${location}` : ""} found.</h1>
-                : (gender || position || location) && (filteredData.length > 1) ? <h1 className='text-black font-bold'>{filteredData.length} {gender} footballers playing {position} {location ? `from ${location}` : ""} found.</h1>
-                : 
-                <></>
+                <h1 className='text-black font-bold'>{filteredData.length} footballers found</h1>
             }
         </form>
 
@@ -108,9 +101,9 @@ return(
                             <div key={footballer.id} className='xl:min-w-lg min-w-full md:border-2 rounded-4xl m-5 border-green-900 text-center justify-between md:flex flex-col md:flex-row'>
                                 <div className='md:w-[50%] items-center text-center justify-center flex'>
                                     {
-                                        footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username}'s profile picture`}/>
+                                        footballer.gender === "male" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
                                         :
-                                        footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username}'s profile picture`}/>
+                                        footballer.gender === "female" ? <img className='border-5 border-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]' src={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} alt={`${footballer.username} profile picture`}/>
                                         : 
                                         <div className='border-5 border-green-900 bg-green-900 rounded-full md:size-30 size-20 md:mb-0 mb-[-40px]'></div>
                                     }
@@ -125,30 +118,33 @@ return(
                                             <h1 className="text-3xl font-bold mb-3">{footballer.username}</h1>
                                         )}
                                         <hr className='mb-2'/>
-                                        {/* {footballer.height && (
+                                        {footballer.height && (
                                             <h2 className="text-base font-medium mb-2">Height: {footballer.height}</h2>
-                                        )} */}
+                                        )}
                                         {footballer.location && (
                                             <h4 className="text-base mb-2">Location: {footballer.location}</h4>
                                         )}
                                         {footballer.position && (
                                             <h6 className="text-sm italic mb-2">Position: {footballer.position}</h6>
                                         )}
-                                        {
-                                            footballer.gender === "male" ? <a target="_blank" href={`https://xsgames.co/randomusers/assets/avatars/male/${Math.floor(Math.random() * 60) + 1}.jpg`} className='underline p-3'>Go to Profile</a>
-                                            :
-                                            <a target="_blank" href={`https://xsgames.co/randomusers/assets/avatars/female/${Math.floor(Math.random() * 60) + 1}.jpg`} className='underline p-3'>Go to Profile</a>
-                                        }
+                                        <button className='underline p-3'>Go to Profile</button>
                                     </article>
                                 </div>
+                                
+                                <Button className="w-full">
+                                    View Profile
+                                </Button>
                             </div>
-                        ));
-                    }
-                )()
+                        </div>
+                    ))
+                )
             }
+                </div>
+            </div>
+            
+            <Footer />
         </div>
-    </div>
-)
+    )
     
 }
 

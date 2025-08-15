@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
-import {dataA} from './academyData'
+import {dataA} from './academyData';
+import Header from '../Header';
+import Footer from '../Footer';
+import Button from '../../components/ui/Button';
+import { Search, MapPin, Mail, ExternalLink } from 'lucide-react';
 
 
 const Academies = () => {
 return(
     <div>
-        <h1 className=''>Academies</h1>
+        <h1 className='underline'>Search Academies</h1>
         {
             dataA.map(academy => (
                 
