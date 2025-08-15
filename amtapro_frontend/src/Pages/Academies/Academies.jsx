@@ -5,7 +5,7 @@ import {dataA} from './academyData'
 const Academies = () => {
 return(
     <div>
-        <h1 className='underline'>Search Academies</h1>
+        <h1 className=''>Academies</h1>
         {
             dataA.map(academy => (
                 

@@ -7,6 +7,7 @@ import Footballers from '../Footballers/Footballers';
 import Academies from '../Academies/Academies';
 import News from '../News/News';
 import Statistics from '../Statistics/Statistics';
+import Amta from '../Amta/Amta';
 
 
 const Lander = () => {
@@ -19,8 +20,10 @@ const Lander = () => {
             >
                 <Hero />
             </div>
+            <Amta />
             <Statistics />
             <Footballers />
+            {/* <Academies /> */}
             <Footer />
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from '.././assets/logo.png'
 import logoM from '.././assets/logo-mobile.png'
 import { Menu, X } from "lucide-react";
@@ -14,7 +14,7 @@ const Navbar = () => {
     { name: "About", to: "#" },
     { name: "News", to: "/news" },
     { name: "Support", to: "#" },
-    { name: "Contact", to: "#" },
+    { name: "Contact", to: "/contact" },
   ];
 
   return (
@@ -24,9 +24,9 @@ const Navbar = () => {
 
         {/* OPENED MOBILE NAV */}
           {isOpen && (
-            <div className=" p-5 bg-white md:hidden xl:hidden 2xl:hidden text-center items-center">
+            <div className={`animate-navBar p-5 bg-white md:hidden xl:hidden 2xl:hidden text-center items-center`}>
               <div className="flex justify-between text-center items-center">
-                <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
+                <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
                 <button
                   className="md:hidden"
                   onClick={() => setIsOpen(!isOpen)}
@@ -103,7 +103,7 @@ const Navbar = () => {
               <div className="p-1 md:hidden"></div>    
                 <div className="pl-5 pr-5 md:hidden">
                 <header className="flex justify-between bg-[#fff] p-2 rounded-full pl-5 pr-5">
-                  <img src={logoM} className='rounded-full size-10' alt="AmtaPro-Logo" />
+                  <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
                   <button
                     className="md:hidden"
                     onClick={() => setIsOpen(!isOpen)}

@@ -5,6 +5,7 @@ import Lander from './Pages/Lander/Lander'
 import News from './Pages/News/News';
 import Footballers from './Pages/Footballers/Footballers'
 import Academies from './Pages/Academies/Academies';
+import Contact from './Pages/Contact/Contact';
 
 
 
@@ -14,8 +15,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Lander />}></Route>
+        <Route path="/*" element={<Lander />}></Route>
         <Route path="/news" element={<News />}></Route>
         <Route path="/footballers" element={<Footballers />}></Route>
+        <Route path="/academies" element={<Academies />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
         <Route path="/academies" element={<Academies />}></Route>
       </Routes>
     </BrowserRouter>
