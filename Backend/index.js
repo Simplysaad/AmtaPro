@@ -3,13 +3,13 @@ import dotenv from "dotenv";
 import Session from "express-session";
 import MongoStore from "connect-mongo";
 import morgan from "morgan";
-import cors from "cors";
+// import cors from "cors";
 
 import connectDB from "./Config/db.js";
 import errorHandler from "./Middlewares/error.middleware.js";
 
-import athleteRoutes from "./Routes/athlete.routes.js";
-import authRoutes from "./Routes/auth.routes.js";
+import athleteRoutes from "./Routes/athlete.route.js";
+import authRoutes from "./Routes/auth.route.js";
 import scoutRoutes from "./Routes/scout.route.js";
 
 dotenv.config();
@@ -17,10 +17,12 @@ const { PORT, MONGO_URI, SECRET_KEY } = process.env;
 
 const app = express();
 
-app.use(cors({
-  origin: 'http://localhost:5173',
-  credentials: true
-}));
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
 
 app.use(morgan("dev"));
 
@@ -45,12 +47,11 @@ app.use(express.static("./Docs/"));
 
 app.use(errorHandler);
 
-
 app.listen(PORT, () => {
   connectDB();
   console.log(`app listening on port ${PORT}`);
 });
 
 app.use("/auth", authRoutes);
-app.use("/athletes", athleteRoutes);
 app.use("/scout", scoutRoutes);
+app.use("/", athleteRoutes);

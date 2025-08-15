@@ -1,12 +1,12 @@
- /* @import "tailwindcss" important; */
- @import "tailwindcss";
- @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+/* @import "tailwindcss" important; */
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
-*{
+* {
   cursor: none;
   font-family: "Josefin Sans", sans-serif;
 }
-.cursor{
+.cursor {
   width: 25px;
   height: 25px;
   background-image: url("./assets/ball.jpeg");
@@ -25,7 +25,7 @@
   --animate-navBar: navBar 0.7s ease-out 0s 1;
   @keyframes navBar {
     0% {
-      transform: translateY(-80px)
+      transform: translateY(-80px);
     }
     100% {
       transform: translateY(0px);
@@ -33,10 +33,94 @@
   }
 }
 
-@keyframes rotate {from{transform: rotate(0deg);}to{transform: rotate(360deg);}}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 @media screen and (max-width: 950px) {
-  .cursor{
+  .cursor {
     display: none;
   }
+}
+
+@import "tailwindcss";
+
+@theme {
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-muted: var(--muted);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+}
+@layer base {
+  :root {
+    --background: #e8f5e9;
+    /* --foreground: hsl(102 47% 10%); */
+
+    --card: hsl(98, 89%, 75%);
+    --muted: hsl(0 0% 20%);
+
+    --primary: hsl(98, 89%, 55%); /*buttons and highlights */
+    --primary-foreground: hsl(120, 46%, 80%);
+
+    --border: hsl(107 33% 60%);
+  }
+
+  .dark {
+    --foreground: hsl(90 40% 98%);
+    --background: hsl(102 47% 4%);
+
+    --card: hsl(102 47% 8%);
+    --muted: hsl(0 0% 60%);
+
+    --primary: hsl(130 65% 65%);
+    --primary-foreground: hsl(132, 36%, 10%);
+
+    --border: hsl(107 33% 20%);
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Utility classes */
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@utility card-hover {
+  @apply transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg;
+  background: linear-gradient(to right, var(--card), var(--card));
+  background-clip: padding-text;
+  border: 1px solid transparent;
+}
+
+@utility btn-primary {
+  /* margin: 100px 0; */
+  @apply bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,246,92,0.5)];
+}
+@utility btn-outline {
+  /* margin: 100px 0; */
+  @apply border-primary border text-primary px-6 py-2 rounded-full font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,246,92,0.5)];
+}
+@utility section {
+  @apply md:min-h-screen py-16;
 }
