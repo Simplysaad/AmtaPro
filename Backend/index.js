@@ -54,5 +54,5 @@ app.listen(PORT, () => {
 
 
 app.use("/auth", authRoutes);
-app.use("/", athleteRoutes);
 app.use("/scout", scoutRoutes);
+app.use("/", athleteRoutes);
