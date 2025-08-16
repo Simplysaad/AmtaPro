@@ -23,7 +23,7 @@ const Lander = () => {
             <Statistics />
             <Amta />
             <Footballers />
-            <Academies />
+            {/* <Academies /> */}
             <Footer />
         </div>
     );
