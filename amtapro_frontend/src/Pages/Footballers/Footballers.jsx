@@ -35,7 +35,7 @@ const Footballers = () => {
   const filteredData = newData
     .filter(footballer => !searchTerm || footballer.username?.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
-    .filter(footballer => !name || footballer.username?.toLowerCase().includes(username.toLowerCase()))
+    .filter(footballer => !username || footballer.username?.toLowerCase().includes(username.toLowerCase()))
     .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 
   return (
@@ -61,7 +61,7 @@ const Footballers = () => {
         <form className="bg-green-100 border border-green-700 rounded-lg p-6 mb-8 shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-300">
         <div className="col-span-1 md:col-span-2">
           <label htmlFor="username" className="block mb-1 font-semibold">Name</label>
-          <input type="text" id="username" className=" w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500" onChange={username => setName(username.target.value)} />
+          <input type="text" id="username" className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500" onChange={username => setUsername(username.target.value)} />
         </div>
         {
           !showFilters && 
