@@ -1,18 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const FindATalent = () => {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/footballers');
-    };
-
     return (
         <div>
             <button 
-                onClick={handleClick}
-                className="p-3 m-3 bg-[#02342B] hover:bg-[#81C13E] hover:text-[#02342B] text-[#81C13E] rounded-lg transition-colors"
+                className="p-3 m-3 bg-primary hover:bg-foreground hover:text-primary rounded-lg transition-colors"
             >
                 Find a Talent
             </button>

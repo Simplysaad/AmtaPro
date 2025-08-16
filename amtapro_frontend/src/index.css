@@ -2,9 +2,8 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
-* {
-  cursor: none;
-  font-family: "Josefin Sans", sans-serif;
+#root{
+  background-color: #e8f5e9;
 }
 .cursor {
   width: 25px;
@@ -25,7 +24,7 @@
   --animate-navBar: navBar 0.7s ease-out 0s 1;
   @keyframes navBar {
     0% {
-      transform: translateY(-80px);
+      transform: translateY(-100px);
     }
     100% {
       transform: translateY(0px);
@@ -64,12 +63,12 @@
 @layer base {
   :root {
     --background: #e8f5e9;
-    /* --foreground: hsl(102 47% 10%); */
+    --foreground: hsl(102 47% 20%);
 
     --card: hsl(98, 89%, 75%);
     --muted: hsl(0 0% 20%);
 
-    --primary: hsl(98, 89%, 55%); /*buttons and highlights */
+    --primary: hsl(98, 89%, 45%); /*buttons and highlights */
     --primary-foreground: hsl(120, 46%, 80%);
 
     --border: hsl(107 33% 60%);

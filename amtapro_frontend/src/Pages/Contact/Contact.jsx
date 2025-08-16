@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
+import Alert from '../Alert';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -9,16 +10,31 @@ const Contact = () => {
     message: '',
   });
 
+  // Alert state
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertData, setAlertData] = useState({ header: '', message: '' });
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const closeAlertBox = () => {
+    setAlertVisible(false);
+  };
+
+  const showAlert = (header, message) => {
+    setAlertData({ header, message });
+    setAlertVisible(true);
+  };
+
   const sendMessage = async (e) => {
     e.preventDefault();
+
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-      alert('Please fill in all fields before sending.');
+      showAlert('Missing Fields', 'Please fill in all fields before sending.');
       return;
     }
+
     try {
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
@@ -28,27 +44,37 @@ const Contact = () => {
           template_id: 'template_12cdgqn',
           user_id: '9nHCjbJ8w8yQTswge',
           template_params: {
-            name: form.name,
-            from_email: form.email, // updated to match your template variable
+            from_name: form.name,
+            from_email: form.email,
             message: form.message,
             to_email: 'mechseiko@gmail.com',
           },
         }),
       });
+
       if (response.ok) {
         setForm({ name: '', email: '', message: '' });
-        alert("Message sent successfully. We will analyze your report and we'll get back to you!");
+        showAlert(
+          'Success',
+          'Message sent successfully. Our team will analyze your report and respond in due course.'
+        );
       } else {
-        alert('Failed to send message. Please try again.');
+        showAlert('Failed', 'Failed to send message. Please try again.');
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert('An error occurred. Please try again later.');
+      showAlert('Error', 'An error occurred. Please try again later.');
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
+      <Alert
+        header={alertData.header}
+        message={alertData.message}
+        show={alertVisible}
+        closeAlertBox={closeAlertBox}
+      />
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-lg p-8 max-w-2xl mx-auto">

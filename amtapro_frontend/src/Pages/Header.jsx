@@ -13,9 +13,9 @@ const Navbar = () => {
     { name: "Home", to: "/" },
     { name: "Footballers", to: "/footballers" },
     { name: "Academies", to: "/academies" },
-    { name: "About", to: "#" },
+    { name: "About", to: "/about" },
     { name: "News", to: "/news" },
-    { name: "Support", to: "#" },
+    { name: "Support", to: "/support" },
     { name: "Contact", to: "/contact" },
   ];
 
@@ -26,7 +26,7 @@ const Navbar = () => {
 
         {/* OPENED MOBILE NAV */}
           {isOpen && (
-            <div className={`animate-navBar p-5 bg-white md:hidden xl:hidden 2xl:hidden text-center items-center`}>
+            <div className={`animate-navBar p-5 bg-card md:hidden xl:hidden 2xl:hidden text-center items-center`}>
               <div className="flex justify-between text-center items-center">
                 <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
                 <button
@@ -73,14 +73,14 @@ const Navbar = () => {
         {/* DESKTOP NAV */}
         <div className="md:p-1"></div>
         <div className="pl-12 pr-12">
-          <header className="hidden rounded-full p-2.5 md:flex text-center justify-between bg-[#fff] pl-10 pr-10">
+          <header className="hidden rounded-full p-2.5 md:flex text-center justify-between bg-card pl-10 pr-10">
               <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
               <ul className="flex pt-4">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.to}
-                      className="m-2.5 p-1 rounded-full hover:text-[#81C13E] hover:underline"
+                      className="m-2.5 p-1 hover:text-primary hover:underline"
                     >
                       {link.name}
                     </Link>
@@ -104,7 +104,7 @@ const Navbar = () => {
             <div>
               <div className="p-1 md:hidden"></div>    
                 <div className="pl-5 pr-5 md:hidden">
-                <header className="flex justify-between bg-[#fff] p-2 rounded-full pl-5 pr-5">
+                <header className="flex justify-between bg-card p-2 rounded-full pl-5 pr-5">
                   <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
                   <button
                     className="md:hidden"
