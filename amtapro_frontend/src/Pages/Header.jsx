@@ -27,8 +27,9 @@ const Navbar = () => {
         {/* OPENED MOBILE NAV */}
           {isOpen && (
             <div className={`animate-navBar p-5 bg-card md:hidden xl:hidden 2xl:hidden text-center items-center`}>
-              <div className="flex justify-between text-center items-center">
+              <div className="mb-3 flex justify-between text-center items-center">
                 <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
+                <h1 className="text-2xl font-sans font-semibold">AmtaPro</h1>
                 <button
                   className="md:hidden"
                   onClick={() => setIsOpen(!isOpen)}
@@ -40,8 +41,10 @@ const Navbar = () => {
                   }
                 </button>
               </div>
+
+              <hr/>
               
-              <ul className="*:mb-5">
+              <ul className="*:mb-5 *:mt-3">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -104,8 +107,9 @@ const Navbar = () => {
             <div>
               <div className="p-1 md:hidden"></div>    
                 <div className="pl-5 pr-5 md:hidden">
-                <header className="flex justify-between bg-card p-2 rounded-full pl-5 pr-5">
+                <header className="flex justify-between bg-card text-center items-center p-2 rounded-full pl-5 pr-5">
                   <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
+                  <h1 className="text-2xl font-sans font-semibold">AmtaPro</h1>
                   <button
                     className="md:hidden"
                     onClick={() => setIsOpen(!isOpen)}

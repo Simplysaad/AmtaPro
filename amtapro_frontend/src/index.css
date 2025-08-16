@@ -24,7 +24,7 @@
   --animate-navBar: navBar 0.7s ease-out 0s 1;
   @keyframes navBar {
     0% {
-      transform: translateY(-100px);
+      transform: translateY(-120px);
     }
     100% {
       transform: translateY(0px);

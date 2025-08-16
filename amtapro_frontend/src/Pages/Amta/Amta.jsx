@@ -23,7 +23,7 @@ const Amta = () => {
           <p className="text-base italic">Founder of AmtaPro</p>
           <p className="text-lg">📍 Location: Nigeria</p>
           <p className="text-lg">⚽ Position: Striker</p>
-          <p className="text-lg">🎂 Age: 24</p>
+          {/* <p className="text-lg">🎂 Age: 24</p> */}
           <p className="text-lg">📏 Height: 6'1"</p>
           <p className="text-lg">🦶 Preferred Foot: Right</p>
           <p className="text-lg">🏟️ Current Club: Rising Stars FC</p>
