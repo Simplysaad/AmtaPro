@@ -7,10 +7,11 @@ import { Filter } from 'lucide-react';
 const Footballers = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [position, setPosition] = useState("");
+  const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
   const [gender, setGender] = useState("");
   const [newData, setNewData] = useState(data);
-  const [showFilters, setShowFilters] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   let locations = [];
   let positions = [];
@@ -34,15 +35,16 @@ const Footballers = () => {
   const filteredData = newData
     .filter(footballer => !searchTerm || footballer.username?.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter(footballer => !position || footballer.position?.toLowerCase().includes(position.toLowerCase()))
+    .filter(footballer => !name || footballer.username?.toLowerCase().includes(username.toLowerCase()))
     .filter(footballer => !location || footballer.location?.toLowerCase().includes(location.toLowerCase()));
 
   return (
-    <div className="text-green-800 p-6">
-      <h1 className="xl:text-3xl text-2xl font-bold text-center mb-6 p-3 shadow-2xl">
-        Start Searching Through {footballers.length - 1}+ Footballers
-      </h1>
+    <div>
+    <h1 className="xl:text-3xl text-2xl font-bold text-center mb-4 p-3 shadow-2xl">
+      Start Searching Through {footballers.length - 1}+ Footballers
+    </h1>
+    <div className="text-green-800 p-3">
 
-      
       <div className="flex justify-end mb-4">
         <button
           type="button"
@@ -55,53 +57,69 @@ const Footballers = () => {
       </div>
 
       
-      {showFilters && (
+  
         <form className="bg-green-100 border border-green-700 rounded-lg p-6 mb-8 shadow-md grid grid-cols-1 md:grid-cols-2 gap-4 transition-all duration-300">
-          <div className="col-span-1 md:col-span-2">
-            <label htmlFor="genders" className="block mb-1 font-semibold">Gender</label>
-            <select
-              id="genders"
-              value={gender}
-              onChange={genderChange}
-              className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              <option value="">All</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-          </div>
-
-          <div className="col-span-1 md:col-span-2">
-            <label htmlFor="positions" className="block mb-1 font-semibold">Position</label>
-            <select
-              id="positions"
-              onChange={e => setPosition(e.target.value)}
-              className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              {positions.map((position, index) => (
-                <option key={index} value={position}>{position}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="col-span-1 md:col-span-2">
-            <label htmlFor="locations" className="block mb-1 font-semibold">Location</label>
-            <select
-              id="locations"
-              onChange={e => setLocation(e.target.value)}
-              className="w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              {locations.map((location, index) => (
-                <option key={index} value={location}>{location}</option>
-              ))}
-            </select>
-          </div>
-
+        <div className="col-span-1 md:col-span-2">
+          <label htmlFor="username" className="block mb-1 font-semibold">Name</label>
+          <input type="text" id="username" className=" w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500" onChange={username => setName(username.target.value)} />
+        </div>
+        {
+          !showFilters && 
           <h1 className="text-black font-bold col-span-1 md:col-span-2">
             {filteredData.length} footballer{filteredData.length !== 1 && 's'} found
           </h1>
+        }
+        
+        {showFilters && (
+          <>
+            <div className="col-span-1 md:col-span-2">
+              <label htmlFor="genders" className="block mb-1 font-semibold">Gender</label>
+              <select
+                id="genders"
+                value={gender}
+                onChange={genderChange}
+                className="mb-1 w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                <option value="">All</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+
+            <div className="col-span-1 md:col-span-2">
+              <label htmlFor="positions" className="block mb-1 font-semibold">Position</label>
+              <select
+                id="positions"
+                onChange={e => setPosition(e.target.value)}
+                className="mb-1 w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                {positions.map((position, index) => (
+                  <option key={index} value={position}>{position}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="col-span-1 md:col-span-2">
+              <label htmlFor="locations" className="block mb-1 font-semibold">Location</label>
+              <select
+                id="locations"
+                onChange={e => setLocation(e.target.value)}
+                className="mb-1 w-full p-2 border border-green-700 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                {locations.map((location, index) => (
+                  <option key={index} value={location}>{location}</option>
+                ))}
+              </select>
+            </div>
+            {
+              showFilters && 
+              <h1 className="text-black font-bold col-span-1 md:col-span-2">
+                {filteredData.length} footballer{filteredData.length !== 1 && 's'} found
+              </h1>
+            }
+          </>
+          )}
         </form>
-      )}
 
       
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 px-4 py-6">
@@ -156,6 +174,7 @@ const Footballers = () => {
           ))
         )}
       </div>
+    </div>
     </div>
   );
 };
