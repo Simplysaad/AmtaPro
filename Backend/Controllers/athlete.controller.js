@@ -195,10 +195,10 @@ export const createNewAthlete = async (req, res, next) => {
   }
 };
 
-uploadImages(
-  path.resolve("../../amtapro_frontend/public/logo.png"),
-  path.resolve("../../amtapro_frontend/public/logo.png"),
-)
-  .then((data) => console.log("UPLOAD RESULTS", data))
-  .catch((err) => console.error(err));
+// uploadImages(
+//   path.resolve("../../amtapro_frontend/public/logo.png"),
+//   path.resolve("../../amtapro_frontend/public/logo.png"),
+// )
+//   .then((data) => console.log("UPLOAD RESULTS", data))
+//   .catch((err) => console.error(err));
  
