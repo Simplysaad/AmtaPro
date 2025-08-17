@@ -7,6 +7,7 @@ import Footballers from './Pages/Footballers/Footballers'
 import Academies from './Pages/Academies/Academies';
 import Contact from './Pages/Contact/Contact';
 import Support from './Pages/Support/Support';
+import About from './Pages/About/About'
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/academies" element={<Academies />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/support" element={<Support />}></Route>
+        <Route path="/about" element={<About />}></Route>
         <Route path="/academies" element={<Academies />}></Route>
       </Routes>
     </BrowserRouter>

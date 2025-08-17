@@ -10,7 +10,6 @@ const Contact = () => {
     message: '',
   });
 
-  // Alert state
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertData, setAlertData] = useState({ header: '', message: '' });
 
@@ -56,7 +55,7 @@ const Contact = () => {
         setForm({ name: '', email: '', message: '' });
         showAlert(
           'Success',
-          'Message sent successfully. Our team will analyze your report and respond in due course.'
+          'Message sent successfully. Our team will get back to you shortly.'
         );
       } else {
         showAlert('Failed', 'Failed to send message. Please try again.');
@@ -68,7 +67,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100 text-gray-800">
+    <div className="flex flex-col min-h-screen bg-green-50 text-green-900">
       <Alert
         header={alertData.header}
         message={alertData.message}
@@ -77,28 +76,26 @@ const Contact = () => {
       />
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
-        <div className="bg-white shadow-md rounded-lg p-8 max-w-2xl mx-auto">
-          <h1 className="text-2xl font-semibold text-green-600 mb-4">
-            Please fill this form, we will get back to you as soon as possible.
+        <div className="bg-white shadow-md rounded-xl p-8 max-w-2xl mx-auto border border-green-700">
+          <h1 className="text-3xl font-bold text-center mb-4 text-green-700">
+            Contact Us
           </h1>
-
-          <p className="mb-6 text-sm text-gray-600">
-            You can also {' '}
+          <p className="text-center text-sm text-gray-600 mb-6">
+            Fill out the form below and we’ll respond as soon as possible. You can also {' '}
             <a href="mailto:amtapro@gmail.com" className="text-blue-500 underline">
-              write us an email
+              email us directly
             </a>{' '}
-              or {' '}
-            <a href="" className="text-blue-500 underline">
-              schedule a meeting.
-            </a>{' '}
+            or {' '}
+            <a href="#" className="text-blue-500 underline">
+              schedule a meeting
+            </a>.
           </p>
 
           <form className="space-y-4" onSubmit={sendMessage}>
             <input
               type="text"
               name="name"
-              id="name"
-              placeholder="Name *"
+              placeholder="Your Name *"
               value={form.name}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -106,8 +103,7 @@ const Contact = () => {
             <input
               type="email"
               name="email"
-              id="email"
-              placeholder="Email *"
+              placeholder="Your Email *"
               value={form.email}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -116,18 +112,20 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              id="message"
               rows="6"
-              placeholder="Message*"
+              placeholder="Your Message *"
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             <button
               type="submit"
-              className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition duration-300"
+              className="w-full py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300"
             >
-              Submit
+              Send Message
             </button>
           </form>
+        </div>
+        <div className="text-center mt-10 text-sm text-gray-600">
+          We appreciate your interest in AmtaPro. Let’s build football’s future together.
         </div>
       </main>
       <Footer />

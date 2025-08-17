@@ -8,7 +8,7 @@ const Support = () => {
         <Header />
         <div className="min-h-screen bg-green-50 text-green-900 p-6">
         <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold text-center mb-6">Support AmtaPro</h1>
+            <h1 className="text-3xl font-bold text-center mb-6">Support the mission</h1>
 
             <p className="text-lg mb-4 text-center">
             Your support helps us empower footballers, grow grassroots talent, and build a stronger football community across Africa.
