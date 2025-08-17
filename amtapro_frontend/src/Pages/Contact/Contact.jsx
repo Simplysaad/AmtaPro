@@ -79,15 +79,20 @@ const Contact = () => {
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-lg p-8 max-w-2xl mx-auto">
           <h1 className="text-2xl font-semibold text-green-600 mb-4">
-            Please fill this form, we will get back to you asap.
+            Please fill this form, we will get back to you as soon as possible.
           </h1>
+
           <p className="mb-6 text-sm text-gray-600">
-            You can also write an email at{' '}
+            You can also {' '}
             <a href="mailto:amtapro@gmail.com" className="text-blue-500 underline">
-              amtapro@gmail.com
+              write us an email
             </a>{' '}
-            or schedule a meeting.
+              or {' '}
+            <a href="" className="text-blue-500 underline">
+              schedule a meeting.
+            </a>{' '}
           </p>
+
           <form className="space-y-4" onSubmit={sendMessage}>
             <input
               type="text"

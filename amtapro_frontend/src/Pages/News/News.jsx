@@ -86,11 +86,13 @@ const News = () => {
               <h1 className="text-center text-red-600 font-semibold text-xl mt-10">
                 Oops, no football news found. Please try again later.
               </h1>
-              <Footballers />
             </div>
           )}
         </div>
       </div>
+      {
+        !filteredNews.length > 0 && <Footballers />
+      }
       <Footer />
     </div>
   );

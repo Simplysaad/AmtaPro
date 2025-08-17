@@ -69,6 +69,25 @@ The app should now be running at `http://localhost:5173`.
 
 ---
 
+
+## . 📝 Common Git Commit Message Conventions
+> Most teams follow the Conventional Commits format. Here's a breakdown:
+
+
+- feat:	A new feature          	feat: add dark mode toggle
+- fix:	A bug fix          	fix: resolve navbar overlap on mobile
+- docs:	Documentation changes          		docs: update README with setup steps
+- style:	Code style changes (no logic)          		style: format button component
+- refactor:	Code refactoring (no feature/bug)          		refactor: simplify form validation logic
+- test:	Adding or updating tests          		test: add unit tests for login flow
+- chore:	Maintenance tasks          		chore: update dependencies
+- perf:	Performance improvements          		perf: lazy load images on homepage
+- ci:	CI/CD related changes          		ci: update GitHub Actions workflow
+- build:	Build system changes          		build: configure webpack for production
+
+
+---
+
 ## 👥 Contributors
 
 We appreciate everyone contributing to this project:
