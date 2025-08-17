@@ -2,7 +2,7 @@ import express, { Router } from "express";
 import multer from "multer";
 const upload = multer({ dest: "Uploads" });
 
-//import cloudinary from "../Utils/cloudinary.js";
+import cloudinary from "../Utils/cloudinary.js";
 
 // import User from "../Models/user.model.js";
 // import Scout from "../Models/scout.model.js"

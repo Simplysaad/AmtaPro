@@ -1,4 +1,6 @@
 import Athlete from "../Models/athlete.model.js";
+import cloudinary, { uploadImages } from "../Utils/cloudinary.js";
+import path from "path"
 
 export const getAthletes = async (req, res, next) => {
   try {
@@ -99,16 +101,20 @@ export const createNewAthlete = async (req, res, next) => {
 
     const { bio, dob, height, weight, positions, nationality } = req.body;
 
-    const { profilePic = null } = req.file;
+    // const { path: profilePic = } = req.file;
+    let { file: profilePic = null } = req;
 
     let cloudinaryUpload;
     if (profilePic) {
-      cloudinaryUpload = cloudinary.upload(profilePic.path, (err, result) => {
-        if (err) {
-          throw new Error("Error uploading image to cloudinary");
+      cloudinaryUpload = await cloudinary.uploader.upload(
+        profilePic.path,
+        (err, result) => {
+          if (err) {
+            throw new Error("Error uploading image to cloudinary");
+          }
+          return result;
         }
-        return result;
-      });
+      );
       console.log("cloudinaryUpload", cloudinaryUpload);
     }
 
@@ -130,8 +136,9 @@ export const createNewAthlete = async (req, res, next) => {
       if (height) updates.$set["physical.height"] = parseInt(height);
       if (weight) updates.$set["physical.weight"] = parseInt(weight);
       if (nationality) updates.$set.nationality = nationality.toLowerCase();
-      // if (cloudinaryUpload) updates.$set.profilePic =  cloudinaryUpload.url;
-      if (profilePic) updates.$set.profilePic = profilePic.path;
+      if (cloudinaryUpload)
+        updates.$set.profilePic = cloudinaryUpload.secure_url;
+      // if (profilePic) updates.$set.profilePic = profilePic.path;
     }
 
     if (positions) {
@@ -187,3 +194,11 @@ export const createNewAthlete = async (req, res, next) => {
     next(err);
   }
 };
+
+// uploadImages(
+//   path.resolve("../../amtapro_frontend/public/logo.png"),
+//   path.resolve("../../amtapro_frontend/public/logo.png"),
+// )
+//   .then((data) => console.log("UPLOAD RESULTS", data))
+//   .catch((err) => console.error(err));
+ 
