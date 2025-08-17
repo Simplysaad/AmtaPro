@@ -37,13 +37,14 @@ const News = () => {
     return <Loader />;
   }
 
-  const filteredNews = news.filter(
+  let filteredNews = news.filter(
     (article) =>
       article.description &&
       keyWords.some((keyWord) =>
         article.description.toLowerCase().includes(keyWord.toLowerCase())
       )
   );
+  filteredNews = [...new Set(filteredNews)]
 
   return (
     <div>

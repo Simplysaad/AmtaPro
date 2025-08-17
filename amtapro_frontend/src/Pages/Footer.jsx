@@ -15,7 +15,7 @@ const Footer = () => {
   ];
   const socialLinks = [
     { name: "Whatsapp", to: "https://chat.whatsapp.com/JOzPp9sQ9XCAMkk9METGws?mode=ac_t" },
-    { name: "X", to: "/" },
+    { name: "X", to: "https://x.com/mechseiko" },
   ];
   const legalLinks = [
     { name: "Terms and Conditions", to: "/terms" },
