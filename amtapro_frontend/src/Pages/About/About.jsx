@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
+import {Link} from 'react-router-dom'
 
 const About = () => {
   return (
@@ -27,9 +28,9 @@ const About = () => {
             <section>
               <h2 className="text-xl font-semibold mb-2 text-green-600">⚽ What We Do</h2>
               <ul className="list-disc list-inside space-y-2">
-                <li>Organize football camps and showcase events</li>
+                {/* <li>Organize football camps and showcase events</li> */}
                 <li>Connect players with clubs, agents, and scouts</li>
-                <li>Offer mentorship and career guidance</li>
+                {/* <li>Offer mentorship and career guidance</li> */}
                 <li>Promote grassroots development and community engagement</li>
               </ul>
             </section>
@@ -41,15 +42,17 @@ const About = () => {
               </p>
             </section>
 
-            <section>
+            <section className='mb-5'>
               <h2 className="text-xl font-semibold mb-2 text-green-600">🤝 Join Us</h2>
               <p>
                 Whether you're a player, coach, sponsor, or fan—there’s a place for you in the AmtaPro family. Together, we can build something extraordinary.
               </p>
             </section>
           </div>
+          <Link to="/support"><button className="px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
+              Support us
+          </button></Link>
         </div>
-
         <div className="text-center mt-10 text-sm text-gray-600">
           AmtaPro is more than football. It’s a movement.
         </div>

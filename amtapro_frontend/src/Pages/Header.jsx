@@ -50,9 +50,7 @@ const Navbar = () => {
                 
                 <hr />
                 
-                <li>
                   <Login onClick={() => setIsOpen(false)}/>
-                </li>
                 <li>
                   <SignUp onClick={() => setIsOpen(false)}/>
                 </li>

@@ -1,43 +1,55 @@
 import React from 'react';
 import amta from '../../assets/amta.jpg';
 import { Canvas } from '@react-three/fiber';
-import { Float, Html, OrbitControls } from '@react-three/drei';
+import { Float, Html } from '@react-three/drei';
 import ImATalent from '../Buttons/ImATalent';
 import FindATalent from '../Buttons/FindATalent';
+import {Link} from 'react-router-dom'
 
 const Amta = () => {
   return (
-    <div className='flex xl:flex-row flex-col'>
-      <div>
-        <h1 className=''>Create an account in minutes.</h1>
-        <p className=''>Share your profile to the world.</p>
+    <div className="flex flex-col xl:flex-row items-center justify-center px-5 py-10 gap-3">
+      
+      <div className="w-full xl:w-3/4 text-center xl:text-left">
+        <h1 className="xl:text-[50px] text-[40px] font-bold mb-4 leading-tight">
+          Create an account in minutes.
+        </h1>
+        <p className="text-lg text-gray-700 mb-6">
+          Share your profile with the world and get discovered.
+        </p>
+        <div className="flex flex-row gap-2 justify-center xl:justify-start">
+          <Link to="/signup"><button 
+              className="w-[200px] p-5 m-3 bg-primary hover:bg-foreground hover:text-primary text-foreground rounded-4xl transition-colors"
+          >
+              Get Started
+          </button></Link>
+        </div>
       </div>
-      <div className="w-full h-[600px] relative z-[10]">
-        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-          <ambientLight intensity={50} />
-          <directionalLight position={[2, 2, 2]} />
-          <OrbitControls enableZoom={false} />
 
-          <Float speed={10} rotationIntensity={2} floatIntensity={5}>
+      <div className="w-full xl:w-1/2 h-[500px] relative z-[10]">
+        <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+          <ambientLight intensity={5} />
+          <directionalLight position={[2, 2, 2]} />
+
+          <Float speed={3} rotationIntensity={1} floatIntensity={2}>
             <mesh>
-              <boxGeometry args={[4, 3.2, 0.2]} />
               <meshStandardMaterial color="#e8f5e9" />
               <Html
-                position={[0, 0, 0.21]}
+                position={[0, 0, 0.2]}
                 transform
                 occlude
                 zIndexRange={[100, 0]}
-                distanceFactor={5}
-                className="w-full h-full"
+                distanceFactor={3.5}
+                className="w-full flex justify-center"
               >
-                <div className="w-[320px] h-[300px] bg-yellow-300 rounded-xl shadow-lg p-4 text-green-800 overflow-y-auto">
+                <div className="w-[320px] h-[400px] bg-primary rounded-xl shadow-lg p-3 overflow-y-auto">
                   <img
                     src={amta}
                     alt="Amta"
-                    className="size-25 rounded-full object-cover mb-2"
+                    className="size-30 rounded-full mb-2 mx-auto"
                   />
-                  <h2 className="text-xl font-bold">Amta</h2>
-                  <p className="text-sm italic text-gray-500">Founder of AmtaPro</p>
+                  <h2 className="text-2xl font-bold text-center">Amta</h2>
+                  <p className="text-sm italic text-white text-center">Founder of AmtaPro</p>
                   <hr className="my-2 border-green-300" />
 
                   <div className="text-xs space-y-1">

@@ -12,7 +12,7 @@ const Number = ({ number, text }) => {
         {inView ? <CountUp end={cleanNumber} duration={5} /> : 0}
         {number.includes('+') && '+'}
       </h1>
-      <h1 className="text-xl text-black mt-2">{text}</h1>
+      <h1 className="text-2xl text-black mt-2">{text}</h1>
     </div>
   );
 };

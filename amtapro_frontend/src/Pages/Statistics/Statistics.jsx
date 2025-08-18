@@ -16,7 +16,7 @@ const Statistics = () => {
     <div className='flex md:flex-row md:justify-around flex-col'>
         <Number number={`${data.length}+`} text={"Footballers"} />
         <Number number={`${dataA.length}+`} text={"Academies"} />
-        <Number number={"20+"} text={"Connections Made"} />
+        <Number number={"20+"} text={"Connections"} />
     </div>
     </motion.div>
   );
