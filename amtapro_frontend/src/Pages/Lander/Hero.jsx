@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="mt-[-100px] pt-30 pb-20 p-10 2xl:h-screen text-center flex flex-col items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }}>
+    <div className="mt-[-100px] pt-30 pb-20 p-10 2xl:h-screen text-center flex flex-col items-center justify-center bg-cover bg-center bg-green-400 bg-blend-multiply" style={{ backgroundImage: `url(${heroBg})` }}>
       <h1 className="text-[#FAFAFA] sm:text-7xl text-5xl font-bold max-w-6xl mx-auto">
         Showcase your <span className="text-primary">Football {text}</span> to the world.
       </h1>

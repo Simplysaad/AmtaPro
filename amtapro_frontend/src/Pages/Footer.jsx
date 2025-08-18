@@ -1,26 +1,10 @@
 import React from 'react';
 import logo from '.././assets/logo.png';
 import { Link } from 'react-router-dom';
+import {quickLinks, socialLinks, legalLinks, email} from '../assets/links'
 
 const Footer = () => {
   const date = new Date().getFullYear();
-  const quickLinks = [
-    { name: "Footballers", to: "/footballers" },
-    { name: "Academies", to: "/academies" },
-    { name: "About", to: "/about" },
-    { name: "News", to: "/news" },
-    { name: "Support", to: "/support" },
-    { name: "Contact", to: "/contact" },
-    { name: "Back to top", to: "/" },
-  ];
-  const socialLinks = [
-    { name: "Whatsapp", to: "https://chat.whatsapp.com/JOzPp9sQ9XCAMkk9METGws?mode=ac_t" },
-    { name: "X", to: "https://x.com/mechseiko" },
-  ];
-  const legalLinks = [
-    { name: "Terms and Conditions", to: "/terms" },
-    { name: "Privacy Policy", to: "/privacy-policy" },
-  ];
 
   return (
     <div>
@@ -74,19 +58,23 @@ const Footer = () => {
             <p className="text-sm text-gray-600">
               AmtaPro is a digital showcase for football talent — a space where players, scouts, teams, and academies connect. It empowers athletes to build profiles, share highlight reels, and be discovered by the right people. Whether you're a rising star or a seasoned scout, this is where football journeys begin and evolve.
             </p>
-            <a href="mailto:amtapro@gmail.com" className="mt-3 text-blue-500 underline">amtapro@gmail.com</a>
+            <a href="mailto:amtapro@gmail.com" className="mt-3 text-blue-500 underline">{email}</a>
           </div>
         </div>
 
         
       </footer>
-      <div className="bg-primary text-center text-white">
+      <div className="bg-foreground pb-5 pt-2 text-center text-white">
         {
           date === 2025 ?
             <h3>Copyright © AmtaPro 2025. All rights reserved.</h3>
             :
             <h3>Copyright © AmtaPro 2025–{date}. All rights reserved.</h3>
         }
+        <div className="mt-2 space-x-4">
+          <Link to={legalLinks.find(link => link.to === "/terms-of-service").to} className="underline">Terms of Service</Link>
+          <Link to={legalLinks.find(link => link.to === "/privacy-policy").to} className="underline">Privacy Policy</Link>
+        </div>
       </div>
     </div>
   );

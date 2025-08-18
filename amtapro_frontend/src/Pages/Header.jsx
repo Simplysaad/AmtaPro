@@ -5,19 +5,10 @@ import { Menu, X } from "lucide-react";
 import {Link} from 'react-router-dom'
 import Login from '../Pages/Buttons/Login'
 import SignUp from '../Pages/Buttons/SignUp'
+import {headerLinks} from '../assets/links'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const links = [
-    { name: "Home", to: "/" },
-    { name: "Footballers", to: "/footballers" },
-    { name: "Academies", to: "/academies" },
-    { name: "About", to: "/about" },
-    { name: "News", to: "/news" },
-    { name: "Support", to: "/support" },
-    { name: "Contact", to: "/contact" },
-  ];
 
   return (
     <nav className="sticky top-0 z-9998">
@@ -45,7 +36,7 @@ const Navbar = () => {
               <hr/>
               
               <ul className="*:mb-5 *:mt-3">
-                {links.map((link) => (
+                {headerLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.to}
@@ -79,7 +70,7 @@ const Navbar = () => {
           <header className="hidden rounded-full p-2.5 md:flex text-center justify-between bg-card pl-10 pr-10">
               <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
               <ul className="flex pt-4">
-                {links.map((link) => (
+                {headerLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       to={link.to}
@@ -108,7 +99,7 @@ const Navbar = () => {
               <div className="p-1 md:hidden"></div>    
                 <div className="pl-5 pr-5 md:hidden">
                 <header className="flex justify-between bg-card text-center items-center p-2 rounded-full pl-5 pr-5">
-                  <img src={logoM} className='rounded-full size-15' alt="AmtaPro-Logo" />
+                  <img src={logoM} className='rounded-full size-13' alt="AmtaPro-Logo" />
                   <h1 className="text-2xl font-sans font-semibold">AmtaPro</h1>
                   <button
                     className="md:hidden"

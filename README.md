@@ -25,7 +25,7 @@ src/
 ---
 
 ## 🚀 Getting Started
-
+7
 Follow these steps to run the project locally:
 
 ```bash

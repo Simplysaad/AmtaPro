@@ -1,14 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const Login = () => {
 
     return (
         <>
-            <button 
+            <Link to="login"><button 
                 className="p-1 m-1 md:p-2 md:m-2 bg-primary hover:bg-foreground hover:text-primary rounded-lg transition-colors"
             >
                 Login
-            </button>
+            </button></Link>
         </>
     );
 }

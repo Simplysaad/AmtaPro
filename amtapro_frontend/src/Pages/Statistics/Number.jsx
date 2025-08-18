@@ -1,12 +1,20 @@
 import React from 'react';
+import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
 const Number = ({ number, text }) => {
-    return (
-        <div className="mb-10">
-            <h1 className="text-[50px] font-bold">{number}</h1>
-            <h1 className="text-xl text-black mt-1">{text}</h1>
-        </div>
-    );
+  const { ref, inView } = useInView({ triggerOnce: true });
+  const cleanNumber = parseInt(number.replace(/\D/g, ''));
+
+  return (
+    <div ref={ref} className="mb-10">
+      <h1 className="text-[60px] font-bold">
+        {inView ? <CountUp end={cleanNumber} duration={5} /> : 0}
+        {number.includes('+') && '+'}
+      </h1>
+      <h1 className="text-xl text-black mt-2">{text}</h1>
+    </div>
+  );
 };
 
 export default Number;

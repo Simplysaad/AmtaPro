@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import Alert from '../Alert';
+import {email} from '../../assets/links'
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -82,7 +83,7 @@ const Contact = () => {
           </h1>
           <p className="text-center text-sm text-gray-600 mb-6">
             Fill out the form below and we’ll respond as soon as possible. You can also {' '}
-            <a href="mailto:amtapro@gmail.com" className="text-blue-500 underline">
+            <a href={email} className="text-blue-500 underline">
               email us directly
             </a>{' '}
             or {' '}

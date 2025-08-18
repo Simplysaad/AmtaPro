@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { data } from './footballerData';
+import { data } from '../../assets/links';
 import Header from '../Header';
 import Footer from '../Footer';
 import { Filter } from 'lucide-react';
