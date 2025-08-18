@@ -4,21 +4,36 @@ import { data, dataA } from '../../assets/links';
 import { motion } from 'framer-motion';
 
 const Statistics = () => {
+  const stats = [
+    { number: `${data.length}+`, label: 'Footballers' },
+    { number: `${dataA.length}+`, label: 'Academies' },
+    { number: '20+', label: 'Connections' },
+  ];
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className=" bg-green-500 text-white p-5 text-center xl:p-15 shadow m-5 rounded-4xl"
+      className=" py-12 px-6 md:px-20 rounded-3xl shadow-lg"
     >
-    <h1 className='md:text-[60px] text-[35px] mb-15 text-4xl font-extrabold tracking-wide'>Join a community of</h1>
-    <div className='flex md:flex-row md:justify-around flex-col'>
-        <Number number={`${data.length}+`} text={"Footballers"} />
-        <Number number={`${dataA.length}+`} text={"Academies"} />
-        <Number number={"20+"} text={"Connections"} />
-    </div>
-    </motion.div>
+      <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 tracking-tight">
+        🌍 Join a thriving community of
+      </h2>
+
+      <div className=" text-white grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        {stats.map((stat, index) => (
+          <div
+            key={index}
+            className="bg-green-700 rounded-2xl p-6 shadow-md hover:scale-105 transition-transform duration-300"
+          >
+            <div className="text-5xl font-extrabold mb-2">{stat.number}</div>
+            <div className="text-lg font-medium tracking-wide">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </motion.section>
   );
 };
 

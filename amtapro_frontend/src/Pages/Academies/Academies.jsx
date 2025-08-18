@@ -6,10 +6,10 @@ import Footer from '../Footer';
 const Academies = () => {
   return (
     <div className="bg-background">
+      <h1 className="xl:text-3xl text-2xl font-bold text-center mb-4 p-3 shadow-2xl">
+        Explore over {dataA.length - 1}+ Academies
+      </h1>
       <section className="max-w-6xl mx-auto px-5 mb-5">
-        <h1 className="xl:text-3xl text-2xl font-bold text-center mb-4 p-3 shadow-2xl">
-          Explore over {dataA.length - 1}+ Academies
-        </h1>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {dataA.map((academy) => (

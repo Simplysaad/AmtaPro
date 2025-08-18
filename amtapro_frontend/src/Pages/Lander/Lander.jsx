@@ -8,6 +8,9 @@ import Academies from '../Academies/Academies';
 import Statistics from '../Statistics/Statistics';
 import Amta from './Amta';
 import goal from '../../assets/goal.mp3'
+import Testimonials from './Testimonials';
+import Sponsors from './Sponsors';
+import Gallery from './Gallery';
 
 
 const Lander = () => {
@@ -47,6 +50,9 @@ const Lander = () => {
             <Footballers />
             <Academies />
             <Statistics />
+            <Testimonials />
+            <Sponsors />
+            <Gallery />
             <Footer />
         </div>
     );

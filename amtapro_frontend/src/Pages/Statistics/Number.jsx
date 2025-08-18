@@ -8,7 +8,7 @@ const Number = ({ number, text }) => {
 
   return (
     <div ref={ref} className="mb-10">
-      <h1 className="text-[60px] font-bold">
+      <h1 className="xl:text-[55px] text-[30px] font-bold">
         {inView ? <CountUp end={cleanNumber} duration={5} /> : 0}
         {number.includes('+') && '+'}
       </h1>
