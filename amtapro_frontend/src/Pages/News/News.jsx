@@ -86,7 +86,7 @@ const News = () => {
             <div>
               <h1 className="text-center text-red-600 font-semibold text-xl mt-10">
                 Oops, no football news found. Please try again later.
-                Fallback football news will be rendered here!
+                {/* Fallback football news will be rendered here! */}
               </h1>
             </div>
           )}

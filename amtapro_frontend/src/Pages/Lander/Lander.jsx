@@ -2,15 +2,12 @@ import React, {useRef, useEffect} from 'react';
 import Hero from './Hero';
 import Header from '../Header'
 import Footer from '../Footer'
-import heroBg from '../../assets/hero-bg.jpg'
 import Footballers from '../Footballers/Footballers';
 import Academies from '../Academies/Academies';
 import Statistics from '../Statistics/Statistics';
 import Amta from './Amta';
 import goal from '../../assets/goal.mp3'
 import Testimonials from './Testimonials';
-import Sponsors from './Sponsors';
-import Gallery from './Gallery';
 
 
 const Lander = () => {
@@ -51,8 +48,6 @@ const Lander = () => {
             <Academies />
             <Statistics />
             <Testimonials />
-            <Sponsors />
-            <Gallery />
             <Footer />
         </div>
     );

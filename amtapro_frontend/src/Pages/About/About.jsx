@@ -2,19 +2,22 @@ import React from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 import {Link} from 'react-router-dom'
+import { quickLinks } from '../../assets/links';
+import Title from '../Title';
 
 const About = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-green-50 text-green-900">
+    <div className="min-h-screen text-green-900">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-xl p-8 max-w-3xl mx-auto border border-green-700">
-          <h1 className="text-3xl font-bold text-center mb-6 text-green-700">
+          {/* <h1 className="text-3xl font-bold text-center mb-6 text-green-700">
             About AmtaPro
-          </h1>
+          </h1> */}
+          <Title title="About AmtaPro" />
 
           <p className="text-lg mb-4 text-center">
-            AmtaPro is a football initiative dedicated to empowering young talents across Africa. We believe in the power of sport to transform lives, build communities, and create opportunities.
+            AmtaPro is a football initiative dedicated to empowering young football talents all over the world. We believe in the power of sport to transform lives, build communities, and create opportunities.
           </p>
 
           <div className="space-y-6">
@@ -49,7 +52,7 @@ const About = () => {
               </p>
             </section>
           </div>
-          <Link to="/support"><button className="px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
+          <Link to={quickLinks.find(link => link.name === "Support").to}><button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
               Support us
           </button></Link>
         </div>

@@ -3,14 +3,17 @@ import Header from '../Pages/Header'
 import Footer from '../Pages/Footer';
 import { Link } from 'react-router-dom';
 import Alert from './Alert';
+import Title from './Title';
+import { quickLinks } from '../assets/links';
 
 const TermsOfService = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-green-50 text-green-900">
+    <div className="min-h-screen bg-green-50 text-green-900">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-xl p-8 max-w-4xl mx-auto border border-green-700">
-          <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Terms of Service</h1>
+          {/* <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Terms of Service</h1> */}
+          <Title title="Terms of Service"/>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-green-600 mb-2">1. Introduction</h2>
@@ -65,10 +68,12 @@ const TermsOfService = () => {
 
           <section>
             <h2 className="text-xl font-semibold text-green-600 mb-2">8. Contact</h2>
-            <p>
-              If you have questions about these terms, please contact us at{' '}
-              <a href="mailto:amtapro@gmail.com" className="text-blue-500 underline">amtapro@gmail.com</a>.
+            <p className='mb-5'>
+              If you have questions about these terms, please contact us.
             </p>
+            <Link to={quickLinks.find(link => link.name === "Contact").to}><button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
+                Contact Us
+            </button></Link>
           </section>
         </div>
       </main>

@@ -6,7 +6,7 @@ const FindATalent = () => {
     return (
         <div>
             <Link to={register}><button 
-                className="p-2 m-3 bg-primary hover:bg-foreground hover:text-primary rounded-lg transition-colors"
+                className="p-2 m-3 bg-primary hover:bg-foreground hover:text-primary rounded-sm transition-colors"
             >
                 Find a Talent
             </button></Link>

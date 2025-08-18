@@ -14,7 +14,7 @@ const Amta = () => {
       
       <div className="w-full xl:w-3/4 text-center xl:text-left xl:mb-0 mb-10">
         <h1 className="xl:text-[50px] text-[40px] font-bold mb-4 leading-tight">
-          Your <strong className="text-primary">next big breakthrough</strong> could just be a click away. 
+          Your <strong className="text-primary font-thin">next big breakthrough</strong> could just be a click away. 
         </h1>
         <p className="text-lg text-gray-700 mb-8">
           Create an account in minutes, share your profile with the world and get discovered.
@@ -57,7 +57,7 @@ const Amta = () => {
                   <div className="text-xs space-y-1">
                     <p><strong>📍 Location:</strong> Nigeria</p>
                     <p><strong>⚽ Position:</strong> Striker</p>
-                    <p><strong>🎂 Age:</strong> 24</p>
+                    <p><strong>🎂 Age:</strong> 20</p>
                     <p><strong>📏 Height:</strong> 6'1"</p>
                     <p><strong>🦶 Preferred Foot:</strong> Right</p>
                     <p><strong>🏟️ Current Club:</strong> Rising Stars FC</p>

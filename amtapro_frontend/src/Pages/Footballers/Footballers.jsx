@@ -3,6 +3,7 @@ import { data } from '../../assets/links';
 import Header from '../Header';
 import Footer from '../Footer';
 import { Filter } from 'lucide-react';
+import Title from '../Title'
 
 const Footballers = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,9 +41,7 @@ const Footballers = () => {
 
   return (
     <div>
-    <h1 className="xl:text-3xl text-2xl font-bold text-center mb-4 p-3 shadow-2xl">
-      Start Searching Through {footballers.length - 1}+ Footballers
-    </h1>
+    <Title title={`Start Searching Through ${footballers.length - 1}0+ Footballers`}/>
     <div className="text-green-800 p-3">
 
       <div className="flex justify-end mb-4">

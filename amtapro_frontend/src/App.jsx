@@ -13,6 +13,7 @@ import SignUp from './Pages/SignUp';
 import TermsOfService from './Pages/TermsOfService';
 import PrivacyPolicy from './Pages/PrivacyPolicy';
 import ForgotPassword from './Pages/ForgotPassword'
+import Team from './Pages/Team';
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/auth/register" element={<SignUp />}></Route>
         <Route path="/auth/forgot-password" element={<ForgotPassword />}></Route>
         <Route path="/terms-of-service" element={<TermsOfService />}></Route>
+        <Route path="/team" element={<Team />}></Route>
         <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
       </Routes>
     </BrowserRouter>

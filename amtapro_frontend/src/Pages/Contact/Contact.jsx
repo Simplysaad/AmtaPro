@@ -3,6 +3,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import Alert from '../Alert';
 import {email} from '../../assets/links'
+import Title from '../Title';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -78,18 +79,19 @@ const Contact = () => {
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-xl p-8 max-w-2xl mx-auto border border-green-700">
-          <h1 className="text-3xl font-bold text-center mb-4 text-green-700">
+          {/* <h1 className="text-3xl font-bold text-center mb-4 text-green-700">
             Contact Us
-          </h1>
+          </h1> */}
+          <Title title="Contact Us" />
           <p className="text-center text-sm text-gray-600 mb-6">
             Fill out the form below and we’ll respond as soon as possible. You can also {' '}
             <a href={email} className="text-blue-500 underline">
-              email us directly
+              email us directly.
             </a>{' '}
-            or {' '}
+            {/* or {' '}
             <a href="#" className="text-blue-500 underline">
               schedule a meeting
-            </a>.
+            </a>. */}
           </p>
 
           <form className="space-y-4" onSubmit={sendMessage}>
@@ -119,7 +121,7 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="w-full py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300"
+              className="outline-none w-full py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300"
             >
               Send Message
             </button>

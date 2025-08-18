@@ -29,6 +29,7 @@ const SignUp = () => {
             <input
               type="text"
               name="name"
+              autoFocus
               placeholder="Name"
               value={form.name}
               onChange={handleChange}

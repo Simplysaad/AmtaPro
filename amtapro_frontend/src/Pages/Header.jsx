@@ -35,7 +35,7 @@ const Navbar = () => {
 
               <hr/>
               
-              <ul className="*:mb-5 *:mt-3">
+              <ul className="*:mb-6 *:mt-4">
                 {headerLinks.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -65,7 +65,7 @@ const Navbar = () => {
         {/* DESKTOP NAV */}
         <div className="md:p-1"></div>
         <div className="pl-12 pr-12">
-          <header className="hidden rounded-full p-2.5 md:flex text-center justify-between bg-card pl-10 pr-10">
+          <header className="hidden rounded-full p-1.5 md:flex text-center justify-between bg-card pl-10 pr-10">
               <img src={logo} className='rounded-full size-15' alt="AmtaPro-Logo" />
               <ul className="flex pt-4">
                 {headerLinks.map((link) => (

@@ -64,7 +64,7 @@ const Footer = () => {
 
         
       </footer>
-      <div className="bg-foreground pb-5 pt-2 text-center text-white">
+      <div className="bg-foreground xl:pb-4 pb-7 pt-3 text-center text-white">
         {
           date === 2025 ?
             <h3>Copyright © AmtaPro 2025. All rights reserved.</h3>

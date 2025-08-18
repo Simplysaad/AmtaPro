@@ -1,12 +1,12 @@
 import React from 'react';
-import Number from './Number';
 import { data, dataA } from '../../assets/links';
 import { motion } from 'framer-motion';
+import Title from '../Title';
 
 const Statistics = () => {
   const stats = [
-    { number: `${data.length}+`, label: 'Footballers' },
-    { number: `${dataA.length}+`, label: 'Academies' },
+    { number: `${data.length}0+`, label: 'Footballers' },
+    { number: `${dataA.length}0+`, label: 'Academies' },
     { number: '20+', label: 'Connections' },
   ];
 
@@ -18,11 +18,9 @@ const Statistics = () => {
       viewport={{ once: true }}
       className=" py-12 px-6 md:px-20 rounded-3xl shadow-lg"
     >
-      <h2 className="text-3xl md:text-5xl font-bold text-center mb-10 tracking-tight">
-        🌍 Join a thriving community of
-      </h2>
+      <Title title="🌍 Join a thriving community of"/>
 
-      <div className=" text-white grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+      <div className="mt-10 text-white grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
         {stats.map((stat, index) => (
           <div
             key={index}
