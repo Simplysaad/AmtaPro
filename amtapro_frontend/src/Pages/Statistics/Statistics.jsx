@@ -12,7 +12,7 @@ const Statistics = () => {
       viewport={{ once: true }}
       className=" bg-green-500 text-white p-5 text-center xl:p-15 shadow m-5 rounded-4xl"
     >
-    <h1 className='md:text-[60px] text-[35px] mb-15 uppercase text-4xl font-extrabold tracking-wide'>Join a community of</h1>
+    <h1 className='md:text-[60px] text-[35px] mb-15 text-4xl font-extrabold tracking-wide'>Join a community of</h1>
     <div className='flex md:flex-row md:justify-around flex-col'>
         <Number number={`${data.length}+`} text={"Footballers"} />
         <Number number={`${dataA.length}+`} text={"Academies"} />

@@ -3,6 +3,7 @@ import Header from '../Pages/Header'
 import Footer from '../Pages/Footer';
 import { Link } from 'react-router-dom';
 import Alert from './Alert';
+import { forgotPassword, register } from '../assets/links';
 
 const Login = () => {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -50,14 +51,14 @@ const Login = () => {
           </form>
 
           <div className="mt-4 text-sm text-center text-gray-600">
-            <Link to="/forgot-password" className="text-blue-500 underline">
+            <Link to={forgotPassword} className="text-blue-500 underline">
               Forgot your password?
             </Link>
           </div>
 
           <div className="mt-6 text-sm text-center text-gray-600">
             Don’t have an account?{' '}
-            <Link to="/signup" className="text-blue-500 underline">
+            <Link to={register} className="text-blue-500 underline">
               Sign up here
             </Link>
           </div>

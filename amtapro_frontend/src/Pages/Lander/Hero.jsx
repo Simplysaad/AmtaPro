@@ -28,7 +28,7 @@ const Hero = () => {
       <p className="md:hidden text-[#FFFFFF] text-xl max-w-xl mx-auto mt-5 mb-3">
         Create a profile, share your highlights, and connect with scouts, teams, and academies worldwide.
       </p>
-      <div className="flex items-center justify-center gap-4 mt-6">
+      <div className="flex items-center justify-center gap-3 mt-5">
         <ImATalent />
         <FindATalent />
       </div>

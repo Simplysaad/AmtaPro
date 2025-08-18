@@ -3,6 +3,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import Alert from '../Alert';
 import {Link} from 'react-router-dom'
+import { quickLinks } from '../../assets/links';
 
 const Support = () => {
     const [alertVisible, setAlertVisible] = useState(false);
@@ -48,7 +49,7 @@ const Support = () => {
                 <li>We connect players with clubs, agents, and sponsors.</li>
             </ul>
 
-            <Link to="/contact"><button className="px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
+            <Link to={quickLinks.find(link => link.name === "Contact").to}><button className="px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
                 Contact Us
             </button></Link>
             </div>

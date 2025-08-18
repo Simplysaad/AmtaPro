@@ -35,6 +35,10 @@ const headerLinks = [
 
 const email = "amtapro@gmail.com"
 
+const login = "/auth/login"
+const register = "/auth/register"
+const forgotPassword = "/auth/forgot-password"
+
 const quickLinks = [
     { name: "News", to: "/news" },
     { name: "About", to: "/about" },
@@ -61,4 +65,7 @@ export {
     email,
     data,
     dataA,
+    login,
+    register,
+    forgotPassword
 }

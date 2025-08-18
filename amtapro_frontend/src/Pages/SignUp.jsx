@@ -3,6 +3,7 @@ import Header from '../Pages/Header'
 import Footer from '../Pages/Footer';
 import { Link } from 'react-router-dom';
 import Alert from './Alert';
+import {login} from '../assets/links'
 
 const SignUp = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
@@ -59,7 +60,7 @@ const SignUp = () => {
 
           <div className="mt-6 text-sm text-center text-gray-600">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-500 underline">
+            <Link to={login} className="text-blue-500 underline">
               Login here
             </Link>
           </div>
