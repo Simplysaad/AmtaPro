@@ -1,13 +1,14 @@
 import React, {useRef, useEffect} from 'react';
 import Hero from './Hero';
-import Header from '../Header'
-import Footer from '../Footer'
+import Header from '../../Components/Header'
+import Footer from '../../Components/Footer'
 import Footballers from '../Footballers/Footballers';
 import Academies from '../Academies/Academies';
 import Statistics from '../Statistics/Statistics';
 import Amta from './Amta';
 import goal from '../../assets/goal.mp3'
 import Testimonials from './Testimonials';
+import AmtaPro from './AmtaPro'
 
 
 const Lander = () => {
@@ -43,6 +44,7 @@ const Lander = () => {
             <audio ref={audioRef} src={goal} preload="auto" />
             <Header />
             <Hero />
+            <AmtaPro />
             <Amta />
             <Footballers />
             <Academies />

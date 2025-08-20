@@ -1,7 +1,7 @@
 import React from 'react';
 import { data, dataA } from '../../assets/links';
 import { motion } from 'framer-motion';
-import Title from '../Title';
+import Title from '../../Components/Title';
 
 const Statistics = () => {
   const stats = [

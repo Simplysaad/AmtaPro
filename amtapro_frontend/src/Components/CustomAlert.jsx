@@ -1,9 +1,7 @@
 import React from 'react';
 import logo from '../assets/logo.png';
 
-const Alert = ({ header, message, show, closeAlertBox }) => {
-  if (!show) return null;
-
+const CustomAlert = ({ header, message}) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center z-1000 font-inter">
       <div className="bg-background p-6 rounded-[30px] shadow-lg text-center max-w-[400px] w-[90%] border-[3px] border-border">
@@ -25,4 +23,4 @@ const Alert = ({ header, message, show, closeAlertBox }) => {
   );
 };
 
-export default Alert;
+export default CustomAlert;

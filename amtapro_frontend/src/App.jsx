@@ -8,12 +8,12 @@ import Academies from './Pages/Academies/Academies';
 import Contact from './Pages/Contact/Contact';
 import Support from './Pages/Support/Support';
 import About from './Pages/About/About'
-import Login from './Pages/Login';
-import SignUp from './Pages/SignUp';
-import TermsOfService from './Pages/TermsOfService';
-import PrivacyPolicy from './Pages/PrivacyPolicy';
-import ForgotPassword from './Pages/ForgotPassword'
-import Team from './Pages/Team';
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/SignUp/SignUp';
+import TermsOfService from './Pages/Terms Of Service/TermsOfService';
+import PrivacyPolicy from './Pages/Privacy Policy/PrivacyPolicy';
+import ForgotPassword from './Pages/Forgot Password/ForgotPassword'
+import Team from './Pages/Team/Team';
 
 
 

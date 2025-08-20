@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Header from '../Pages/Header'
-import Footer from '../Pages/Footer';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 import { Link } from 'react-router-dom';
-import Alert from './Alert';
-import Title from './Title';
-import { quickLinks } from '../assets/links';
+import Title from '../../Components/Title';
+import { quickLinks } from '../../assets/links';
+import Button from '../../Components/Button';
+import Focus from '../../Components/Focus';
 
 const PrivacyPolicy = () => {
   return (
@@ -14,6 +15,7 @@ const PrivacyPolicy = () => {
         <div className="bg-white shadow-md rounded-xl p-8 max-w-4xl mx-auto border border-green-700">
           {/* <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Privacy Policy</h1> */}
           <Title title="Privay Policy" />
+          <Focus />
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-green-600 mb-2">1. Overview</h2>
@@ -76,9 +78,7 @@ const PrivacyPolicy = () => {
             <p className='mb-5'>
               For questions about this policy,
             </p>
-            <Link to={quickLinks.find(link => link.name === "Contact").to}><button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
-                Contact Us
-            </button></Link>
+            <Button text={"Contact us"} link={quickLinks.find(link => link.name === "Contact").to}/>
           </section>
         </div>
       </main>

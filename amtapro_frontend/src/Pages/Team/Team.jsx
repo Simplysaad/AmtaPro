@@ -1,8 +1,10 @@
 import React from 'react';
-import { team } from '../assets/links';
-import Title from '../Pages/Title';
-import Header from '../Pages/Header';
-import Footer from '../Pages/Footer';
+import { team } from '../../assets/links';
+import Title from '../../Components/Title';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Focus from '../../Components/Focus';
+
 
 const Team = () => {
   return (
@@ -11,6 +13,8 @@ const Team = () => {
       <section className="bg-background py-16 px-4">
         <div autoFocus className="max-w-6xl mx-auto text-center">
           <Title title="Meet the Team" />
+          <Focus />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-10">
             {team.map((member, index) => (
               <div

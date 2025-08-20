@@ -1,3 +1,5 @@
+import logo from './logo.png'
+
 import mechseiko from '../assets/mechseiko.png'
 
 import amta from '../assets/amta.jpg'
@@ -27,6 +29,7 @@ const headerLinks = [
     { name: "Field", to: "/" },
     { name: "News", to: "/news" },
     { name: "About", to: "/about" },
+    { name: "Team", to: "/team" },
     { name: "Support", to: "/support" },
     { name: "Contact", to: "/contact" },
 ];
@@ -51,6 +54,7 @@ const quickLinks = [
     { name: "About", to: "/about" },
     { name: "Support", to: "/support" },
     { name: "Contact", to: "/contact" },
+    { name: "Team", to: "/team" },
     { name: "Back to top", to: "/" },
 ];
 
@@ -60,7 +64,6 @@ const socialLinks = [
 ];
 
 const legalLinks = [
-    { name: "Team", to: "/team" },
     { name: "Terms and Conditions", to: "/terms-of-service" },
     { name: "Privacy Policy", to: "/privacy-policy" },
 ];
@@ -94,6 +97,7 @@ const testimonials = [
 
 
 export {
+    logo,
     headerLinks,
     quickLinks,
     socialLinks,

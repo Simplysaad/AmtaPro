@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Header from '../Pages/Header';
-import Footer from '../Pages/Footer';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 import { Link } from 'react-router-dom';
-import Alert from './Alert';
-import {login} from '../assets/links'
+import {login} from '../../assets/links'
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');

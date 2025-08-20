@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
-import Header from '../Pages/Header'
-import Footer from '../Pages/Footer';
+import Header from '../../Components/Header'
+import Footer from '../../Components/Footer';
 import { Link } from 'react-router-dom';
-import Alert from './Alert';
-import { forgotPassword, register } from '../assets/links';
+import {login} from '../../assets/links'
 
-const Login = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
+const SignUp = () => {
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    // Login Logic
-    console.log('Logging in with:', form);
+    // SignUp Logic
+    console.log('Signing up with:', form);
   };
 
   return (
@@ -23,14 +22,22 @@ const Login = () => {
       <Header />
       <main className="flex-grow container mx-auto px-4 py-10">
         <div className="bg-white shadow-md rounded-xl p-8 max-w-md mx-auto border border-green-700">
-          <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Login</h1>
+          <h1 className="text-3xl font-bold text-center mb-6 text-green-700">Sign Up</h1>
 
-          <form className="space-y-4" onSubmit={handleLogin}>
+          <form className="space-y-4" onSubmit={handleSignup}>
+            <input
+              type="text"
+              name="name"
+              autoFocus
+              placeholder="Name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
             <input
               type="email"
               name="email"
               placeholder="Email"
-              autoFocus
               value={form.email}
               onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -47,20 +54,14 @@ const Login = () => {
               type="submit"
               className="w-full py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300"
             >
-              Login
+              Create Account
             </button>
           </form>
 
-          <div className="mt-4 text-sm text-center text-gray-600">
-            <Link to={forgotPassword} className="text-blue-500 underline">
-              Forgot your password?
-            </Link>
-          </div>
-
           <div className="mt-6 text-sm text-center text-gray-600">
-            Don’t have an account?{' '}
-            <Link to={register} className="text-blue-500 underline">
-              Sign up here
+            Already have an account?{' '}
+            <Link to={login} className="text-blue-500 underline">
+              Login here
             </Link>
           </div>
         </div>
@@ -70,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

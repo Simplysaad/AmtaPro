@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import heroBg from '../../assets/hero-bg.jpg';
-import ImATalent from '../Buttons/ImATalent';
-import FindATalent from '../Buttons/FindATalent';
+import ImATalent from './ImATalent';
+import FindATalent from './FindATalent';
 
 const Hero = () => {
   const [text, setText] = useState("Talent");

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
-import Alert from '../Alert';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Alert from './Alert';
 import {email} from '../../assets/links'
-import Title from '../Title';
+import Title from '../../Components/Title';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -97,6 +97,7 @@ const Contact = () => {
           <form className="space-y-4" onSubmit={sendMessage}>
             <input
               type="text"
+              autoFocus
               name="name"
               placeholder="Your Name *"
               value={form.name}

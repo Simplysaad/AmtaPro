@@ -2,8 +2,6 @@ import React from 'react';
 import amta from '../../assets/amta.jpg';
 import { Canvas } from '@react-three/fiber';
 import { Float, Html } from '@react-three/drei';
-import ImATalent from '../Buttons/ImATalent';
-import FindATalent from '../Buttons/FindATalent';
 import {Link, useNavigate} from 'react-router-dom'
 import { quickLinks, register } from '../../assets/links';
 
@@ -14,7 +12,7 @@ const Amta = () => {
       
       <div className="w-full xl:w-3/4 text-center xl:text-left xl:mb-0 mb-10">
         <h1 className="xl:text-[50px] text-[40px] font-bold mb-4 leading-tight">
-          Your <strong className="text-primary font-thin">next big breakthrough</strong> could just be a click away. 
+          Your <i className="text-primary">next big breakthrough</i> could just be a click away. 
         </h1>
         <p className="text-lg text-gray-700 mb-8">
           Create an account in minutes, share your profile with the world and get discovered.
@@ -33,7 +31,7 @@ const Amta = () => {
           <ambientLight intensity={5} />
           <directionalLight position={[2, 2, 2]} />
 
-          <Float speed={9} rotationIntensity={1.5} floatIntensity={2}>
+          <Float speed={10} rotationIntensity={1.5} floatIntensity={2}>
             <mesh>
               <meshStandardMaterial color="#e8f5e9" />
               <Html
@@ -68,8 +66,8 @@ const Amta = () => {
                     Amta is a dynamic forward known for explosive pace, clinical finishing, and visionary leadership on and off the pitch. His journey from grassroots football to founding AmtaPro is a testament to passion, grit, and purpose.
                   </p>
                   <button onClick={() => navigate(quickLinks.find(link => link.name === "Contact").to)} className="px-5 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
-                    View Profile
-                </button>
+                      View Profile
+                  </button>
                 </div>
               </Html>
             </mesh>

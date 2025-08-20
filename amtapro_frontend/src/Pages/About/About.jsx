@@ -1,9 +1,11 @@
 import React from 'react';
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
 import {Link} from 'react-router-dom'
 import { quickLinks } from '../../assets/links';
-import Title from '../Title';
+import Title from '../../Components/Title';
+import Button from '../../Components/Button'
+import Focus from '../../Components/Focus'
 
 const About = () => {
   return (
@@ -15,6 +17,7 @@ const About = () => {
             About AmtaPro
           </h1> */}
           <Title title="About AmtaPro" />
+          <Focus />
 
           <p className="text-lg mb-4 text-center">
             AmtaPro is a football initiative dedicated to empowering young football talents all over the world. We believe in the power of sport to transform lives, build communities, and create opportunities.
@@ -52,9 +55,7 @@ const About = () => {
               </p>
             </section>
           </div>
-          <Link to={quickLinks.find(link => link.name === "Support").to}><button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
-              Support us
-          </button></Link>
+          <Button text={"Support us"} link={quickLinks.find(link => link.name === "Support").to} />
         </div>
         <div className="text-center mt-10 text-sm text-gray-600">
           AmtaPro is more than football. It’s a movement.

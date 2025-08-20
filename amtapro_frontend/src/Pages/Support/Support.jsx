@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import Header from '../Header'
-import Footer from '../Footer'
+import Header from '../../Components/Header'
+import Footer from '../../Components/Footer'
 import {Link} from 'react-router-dom'
 import { quickLinks } from '../../assets/links';
-import Title from '../Title';
+import Title from '../../Components/Title';
+import Button from '../../Components/Button';
+import Focus from '../../Components/Focus';
 
 const Support = () => {
 
@@ -14,6 +16,7 @@ const Support = () => {
         <div className="max-w-4xl mx-auto">
             {/* <h1 className="text-3xl font-bold text-center mb-6">Support the mission</h1> */}
             <Title title="Support the mission"/>
+            <Focus />
 
             <p className="text-lg mb-4 text-center">
             Your support helps us empower footballers, grow grassroots talent, and build a stronger football community across Africa.
@@ -27,9 +30,7 @@ const Support = () => {
                 <li>We connect players with clubs, agents, and sponsors.</li>
             </ul>
 
-            <Link to={quickLinks.find(link => link.name === "Contact").to}><button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
-                Contact Us
-            </button></Link>
+            <Button text={"Contact us"} link={quickLinks.find(link => link.name === "Contact").to}/>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-6 mb-8 border border-green-700">
@@ -46,9 +47,7 @@ const Support = () => {
             <p className="mb-4">
                 You can also support us securely through online payment. Click the button below to proceed.
             </p>
-            <button className="outline-none px-6 py-3 bg-green-700 text-white rounded-full hover:bg-green-800 transition duration-300">
-                Donate Online
-            </button>
+            <Button text={"Donate Online"}/>
             </div>
 
             <div className="text-center mt-10 text-sm text-gray-600">

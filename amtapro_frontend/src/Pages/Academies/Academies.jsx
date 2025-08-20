@@ -1,13 +1,13 @@
 import React from 'react';
 import { dataA } from '../../assets/links';
-import Header from '../Header';
-import Footer from '../Footer';
-import Title from '../Title'
+import Header from '../../Components/Header';
+import Footer from '../../Components/Footer';
+import Title from '../../Components/Title'
 
 const Academies = () => {
   return (
     <div className="bg-background p-2">
-      <Title title={`Explore over ${dataA.length - 1}0+ Academies and Scouts`}/>
+      <Title title={`Explore over ${dataA.length}0+ Academies and Scouts`}/>
       <section className="max-w-6xl mx-auto px-5 mb-5">
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

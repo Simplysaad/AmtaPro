@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Loader from "../Loader";
-import Header from "../Header";
-import Footer from "../Footer";
+import Loader from "../../Components/Loader";
+import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
 import Footballers from "../Footballers/Footballers";
 import { Newspaper } from "lucide-react";
 

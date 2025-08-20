@@ -4,7 +4,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import {testimonials} from '../../assets/links'
-import Title from '../Title';
+import Title from '../../Components/Title';
 
 
 const Testimonials = () => {
