@@ -117,10 +117,25 @@
 
 ---
 
+## POST /auth/register
+**Description**
+QueryParameters
+Body Parameters
+Response 
+Errors
+
+## POST /auth/login
+Description
+QueryParameters
+Body Parameters
+Response 
+Errors
+
+
 ## Notes
 
 - All responses include a `success` boolean and a `message`.
-- Authentication is required for POST and PUT routes.
+- Authentication may be required for POST and PUT routes.
 - Data models may include nested fields like `physical` (for age, height, weight).
 - Use session, API key, or JWT for authentication as described in the middleware.
 
